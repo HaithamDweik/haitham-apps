@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,7 +17,7 @@
 <script>tailwind.config = { darkMode: 'class' }</script>
 <style>
   *{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;overscroll-behavior:none;-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:"Segoe UI","Arial Unicode MS",Arial,Helvetica,"David","Noto Sans Hebrew",sans-serif;overscroll-behavior:none;-webkit-text-size-adjust:100%}
   .safe-bottom{padding-bottom:env(safe-area-inset-bottom,0)}
   ::-webkit-scrollbar{width:4px;height:4px}
   ::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:2px}
@@ -35,12 +36,12 @@ const DICT = {
     tabs: { daily: "Daily Schedule", inventory: "Inventory", archive: "Archive", dashboard: "Dashboard" },
     pool: "To Do Pool of Tasks", fastDoing: "Fast Doing Tasks (tel/sms/email 5-10)",
     scheduled: "Scheduled Tasks", newTasks: "New Tasks / Distractions / Remembered",
-    homeBefore: "Home ג€” before work", toWork: "On the way to work", fromWork: "On the way home", homeAfter: "Home ג€” after work",
+    homeBefore: "Home — before work", toWork: "On the way to work", fromWork: "On the way home", homeAfter: "Home — after work",
     task: "Task", time: "Time (min)", priority: "Priority", note: "Note", from: "From", to: "To",
     sortTime: "Sort: Time", sortPriority: "Sort: Priority", sortTask: "Sort: Task",
-    addTask: "+ Add task", moveToScheduled: "Send to today ג†’", moveBack: "ג† Back to pool", moveToNext: "Move to tomorrow",
+    addTask: "+ Add task", moveToScheduled: "Send to today →", moveBack: "← Back to pool", moveToNext: "Move to tomorrow",
     done: "Done", delete: "Delete", category: "Category", dueDate: "Due date",
-    importToToday: "ג†’ Today's pool", importedBadge: "In today's pool", inventoryEmpty: "No items in this category yet.",
+    importToToday: "→ Today's pool", importedBadge: "In today's pool", inventoryEmpty: "No items in this category yet.",
     archiveEmpty: "Nothing archived yet.", addInventoryItem: "+ Add item",
     possibleMatch: "This may already exist in inventory:", importInstead: "Import this item instead", keepNew: "Keep as new",
     dashboardTitle: "Dashboard", completedToday: "Completed today", completedTotal: "Total archived", byCategory: "By category",
@@ -59,72 +60,72 @@ const DICT = {
     moveToInventory:"Move to inventory", dueDatePick:"Pick due date", year:"Year",
     restore:"Restore to today",
     search:"Search", searchPlaceholder:"Search tasks everywhere...", noResults:"No matches found",
-    waitingTitle:"Waiting for reply", waitingDateLabel:"Expected reply by", waitingNote:"Note (optional)", waitingResolve:"Got reply - mark resolved ג“", waitingCycleCount:"Ping-pong cycle #{n}", waitingFor:"Waiting For List", newPanel:"+ New panel", panelName:"Panel name", addPanel:"Add", waitingAutoMoved:"Auto-moved (due date reached)",
+    waitingTitle:"Waiting for reply", waitingDateLabel:"Expected reply by", waitingNote:"Note (optional)", waitingResolve:"Got reply - mark resolved ✓", waitingCycleCount:"Ping-pong cycle #{n}", waitingFor:"Waiting For List", newPanel:"+ New panel", panelName:"Panel name", addPanel:"Add", waitingAutoMoved:"Auto-moved (due date reached)",
     dashToday: "Completed today", dashTotal: "Total archived", dashCat: "By category", archiveTitle: "Archive"
   },
   he: {
-    appTitle: "׳”׳™׳•׳׳ ׳”׳™׳•׳׳™ ׳©׳׳™", dir: "rtl",
-    tabs: { daily: "׳™׳•׳׳ ׳™׳•׳׳™", inventory: "׳׳׳׳™", archive: "׳׳¨׳›׳™׳•׳", dashboard: "׳“׳©׳‘׳•׳¨׳“" },
-    pool: "׳׳׳׳™ ׳׳©׳™׳׳•׳× ׳׳‘׳™׳¦׳•׳¢ (POOL)", fastDoing: "׳׳©׳™׳׳•׳× ׳׳”׳™׳¨׳•׳× (׳˜׳׳₪׳•׳/׳׳¡׳¨׳•׳/׳׳™׳™׳ 5-10)",
-    scheduled: "׳׳©׳™׳׳•׳× ׳׳×׳•׳–׳׳ ׳•׳×", newTasks: "׳׳©׳™׳׳•׳× ׳—׳“׳©׳•׳× / ׳”׳¡׳—׳•׳× / ׳ ׳–׳›׳¨׳×׳™",
-    homeBefore: "׳‘׳™׳× ג€” ׳׳₪׳ ׳™ ׳”׳¢׳‘׳•׳“׳”", toWork: "׳‘׳“׳¨׳ ׳׳¢׳‘׳•׳“׳”", fromWork: "׳‘׳“׳¨׳ ׳׳”׳¢׳‘׳•׳“׳”", homeAfter: "׳‘׳™׳× ג€” ׳׳׳—׳¨ ׳”׳¢׳‘׳•׳“׳”",
-    task: "׳׳©׳™׳׳”", time: "׳–׳׳ (׳“׳§')", priority: "׳¢׳“׳™׳₪׳•׳×", note: "׳”׳¢׳¨׳”", from: "׳׳©׳¢׳”", to: "׳¢׳“ ׳©׳¢׳”",
-    sortTime: "׳׳™׳•׳: ׳–׳׳", sortPriority: "׳׳™׳•׳: ׳¢׳“׳™׳₪׳•׳×", sortTask: "׳׳™׳•׳: ׳׳©׳™׳׳”",
-    addTask: "+ ׳”׳•׳¡׳£ ׳׳©׳™׳׳”", moveToScheduled: "ג†’ ׳׳™׳•׳׳ ׳”׳™׳•׳", moveBack: "ג† ׳—׳–׳¨׳” ׳׳׳׳׳™", moveToNext: "׳”׳¢׳‘׳¨ ׳׳׳—׳¨",
-    done: "׳‘׳•׳¦׳¢", delete: "׳׳—׳§", category: "׳§׳˜׳’׳•׳¨׳™׳”", dueDate: "׳×׳׳¨׳™׳ ׳™׳¢׳“",
-    importToToday: "ג†’ ׳׳׳׳׳™ ׳”׳™׳•׳", importedBadge: "׳ ׳׳¦׳ ׳‘׳׳׳׳™ ׳”׳™׳•׳", inventoryEmpty: "׳׳™׳ ׳¢׳“׳™׳™׳ ׳₪׳¨׳™׳˜׳™׳ ׳‘׳§׳˜׳’׳•׳¨׳™׳” ׳–׳•.",
-    archiveEmpty: "׳”׳׳¨׳›׳™׳•׳ ׳¨׳™׳§.", addInventoryItem: "+ ׳”׳•׳¡׳£ ׳₪׳¨׳™׳˜",
-    possibleMatch: "׳™׳™׳×׳›׳ ׳©׳”׳׳©׳™׳׳” ׳›׳‘׳¨ ׳§׳™׳™׳׳× ׳‘׳׳׳׳™:", importInstead: "׳™׳™׳‘׳ ׳₪׳¨׳™׳˜ ׳–׳” ׳‘׳׳§׳•׳", keepNew: "׳”׳©׳׳¨ ׳›׳—׳“׳©",
-    dashboardTitle: "׳“׳©׳‘׳•׳¨׳“", completedToday: "׳”׳•׳©׳׳׳• ׳”׳™׳•׳", completedTotal: "׳¡׳”׳´׳› ׳‘׳׳¨׳›׳™׳•׳", byCategory: "׳׳₪׳™ ׳§׳˜׳’׳•׳¨׳™׳”",
-    darkMode: "׳׳¦׳‘ ׳›׳”׳”", language: "׳©׳₪׳”", color: "׳¦׳‘׳¢ ׳˜׳§׳¡׳˜", bgColor: "׳”׳“׳’׳©׳× ׳×׳", today: "׳”׳™׳•׳",
-    panelColor: "׳¦׳‘׳¢ ׳¨׳§׳¢ ׳”׳—׳׳•׳ ׳™׳×", cellColor: "׳¦׳‘׳¢ ׳¨׳§׳¢ ׳‘׳¨׳™׳¨׳× ׳׳—׳“׳ ׳׳×׳׳™׳", reset: "׳׳™׳₪׳•׳¡", panelColors: "׳¦׳‘׳¢׳™ ׳—׳׳•׳ ׳™׳×",
-    categories: { pool: "׳׳׳’׳¨ (Pool)", workTasks: "׳׳©׳™׳׳•׳× ׳¢׳‘׳•׳“׳”", fieldWork: "׳¢׳‘׳•׳“׳× ׳©׳˜׳—", recurrents: "׳—׳–׳¨׳•׳× ׳×׳§׳•׳₪׳×׳™׳•׳×", easyFast: "׳§׳ / ׳׳”׳™׳¨",
-      financial: "׳₪׳™׳ ׳ ׳¡׳™", personalFast: "׳׳™׳©׳™ ׳׳”׳™׳¨", personalOut: "׳׳™׳©׳™ ׳‘׳—׳•׳¥", personal: "׳׳™׳©׳™",
-      other: "׳׳—׳¨", waiting: "׳‘׳”׳׳×׳ ׳”", strategic: "׳׳¡׳˜׳¨׳˜׳’׳™", deadlines: "׳“׳“׳׳™׳™׳" },
-    dragHint: "׳’׳¨׳™׳¨׳× ׳”׳›׳•׳×׳¨׳× ׳׳©׳ ׳” ׳׳™׳§׳•׳ ׳”׳—׳׳•׳ ׳™׳× (׳׳—׳™׳¦׳” ׳•׳’׳¨׳™׳¨׳”)", movePanelLeft: "׳©׳׳— ׳—׳׳•׳ ׳™׳× ׳׳׳—׳•׳¨ (׳׳×׳—׳× ׳׳׳—׳¨׳•׳×)", movePanelRight: "׳”׳‘׳ ׳—׳׳•׳ ׳™׳× ׳׳§׳“׳׳” (׳׳¢׳)",
-    moveUp: "׳”׳–׳– ׳©׳•׳¨׳” ׳׳׳¢׳׳”", moveDown: "׳”׳–׳– ׳©׳•׳¨׳” ׳׳׳˜׳”", dragRowHint: "׳’׳¨׳•׳¨ ׳›׳“׳™ ׳׳”׳–׳™׳– ׳©׳•׳¨׳” ׳–׳• ׳׳›׳ ׳׳§׳•׳ ׳‘׳¨׳©׳™׳׳”",
-    signIn:"׳”׳×׳—׳‘׳¨׳•׳×", signUp:"׳™׳¦׳™׳¨׳× ׳—׳©׳‘׳•׳", email:"׳׳™׳׳™׳™׳", password:"׳¡׳™׳¡׳׳”", noAccount:"׳׳™׳ ׳—׳©׳‘׳•׳? ׳¦׳•׳¨ ׳׳—׳“", haveAccount:"׳™׳© ׳׳ ׳—׳©׳‘׳•׳? ׳”׳×׳—׳‘׳¨", continueOffline:"׳”׳׳©׳ ׳‘׳׳™ ׳—׳©׳‘׳•׳ (׳׳›׳©׳™׳¨ ׳–׳” ׳‘׳׳‘׳“)", signOut:"׳”׳×׳ ׳×׳§", syncing:"׳׳¡׳•׳ ׳›׳¨׳ ׳׳¢׳ ׳ ׳”", loadingApp:"׳˜׳•׳¢׳...", loginTitle:"׳”׳×׳—׳‘׳¨ ׳›׳“׳™ ׳׳¡׳ ׳›׳¨׳ ׳‘׳™׳ ׳׳›׳©׳™׳¨׳™׳",
-    syncSaving:"׳©׳•׳׳¨...", syncError:"׳©׳’׳™׳׳× ׳¡׳ ׳›׳¨׳•׳ - ׳”׳§׳© ׳׳ ׳™׳¡׳™׳•׳ ׳—׳•׳–׳¨", syncLocal:"׳׳¦׳‘ ׳׳§׳•׳׳™ - ׳׳ ׳׳¡׳•׳ ׳›׳¨׳",
-    moveToTomorrow:"׳”׳¢׳‘׳¨ ׳׳׳—׳¨", chooseDate:"׳‘׳—׳¨ ׳×׳׳¨׳™׳...", rowMenuHint:"׳§׳׳™׳§ ׳™׳׳ ׳™ / ׳׳—׳™׳¦׳” ׳׳¨׳•׳›׳” ׳׳”׳¢׳‘׳¨׳” ׳׳×׳׳¨׳™׳ ׳׳—׳¨",
-    categoryNone:"׳‘׳׳™ ׳§׳˜׳’׳•׳¨׳™׳”",
-    selectedCount:"{n} ׳׳©׳™׳׳•׳× ׳׳¡׳•׳׳ ׳•׳×",
-    moveToInventory:"׳”׳¢׳‘׳¨ ׳׳׳׳׳™", dueDatePick:"׳‘׳—׳¨ ׳×׳׳¨׳™׳ ׳™׳¢׳“", year:"׳©׳ ׳”",
-    restore:"׳©׳—׳–׳¨ ׳׳”׳™׳•׳",
-    search:"׳—׳™׳₪׳•׳©", searchPlaceholder:"׳—׳₪׳© ׳׳©׳™׳׳” ׳‘׳›׳ ׳׳§׳•׳ ׳‘׳×׳›׳ ׳”...", noResults:"׳׳ ׳ ׳׳¦׳׳• ׳×׳•׳¦׳׳•׳×",
-    waitingTitle:"׳׳׳×׳™׳ ׳׳×׳©׳•׳‘׳”", waitingDateLabel:"׳×׳׳¨׳™׳ ׳™׳¢׳“ ׳׳×׳©׳•׳‘׳”", waitingNote:"׳”׳¢׳¨׳” (׳¨׳©׳•׳×)", waitingResolve:"׳§׳™׳‘׳׳×׳™ ׳×׳©׳•׳‘׳” - ׳¡׳׳ ׳›׳₪׳×׳•׳¨ ג“", waitingCycleCount:"׳׳—׳–׳•׳¨ ׳₪׳™׳ ׳’-׳₪׳•׳ ׳’ #{n}", waitingFor:"׳¨׳©׳™׳׳× ׳׳׳×׳™׳ ׳™׳", newPanel:"+ ׳—׳׳•׳ ׳™׳× ׳—׳“׳©׳”", panelName:"׳©׳ ׳”׳—׳׳•׳ ׳™׳×", addPanel:"׳”׳•׳¡׳£", waitingAutoMoved:"׳”׳•׳¢׳‘׳¨ ׳׳•׳˜׳•׳׳˜׳™׳× (׳”׳’׳™׳¢ ׳×׳׳¨׳™׳ ׳™׳¢׳“)",
-    dashToday: "׳”׳•׳©׳׳׳• ׳”׳™׳•׳", dashTotal: "׳¡׳”׳´׳› ׳‘׳׳¨׳›׳™׳•׳", dashCat: "׳׳₪׳™ ׳§׳˜׳’׳•׳¨׳™׳”", archiveTitle: "׳׳¨׳›׳™׳•׳"
+    appTitle: "היומן היומי שלי", dir: "rtl",
+    tabs: { daily: "יומן יומי", inventory: "מלאי", archive: "ארכיון", dashboard: "דשבורד" },
+    pool: "מלאי משימות לביצוע (POOL)", fastDoing: "משימות מהירות (טלפון/מסרון/מייל 5-10)",
+    scheduled: "משימות מתוזמנות", newTasks: "משימות חדשות / הסחות / נזכרתי",
+    homeBefore: "בית — לפני העבודה", toWork: "בדרך לעבודה", fromWork: "בדרך מהעבודה", homeAfter: "בית — לאחר העבודה",
+    task: "משימה", time: "זמן (דק')", priority: "עדיפות", note: "הערה", from: "משעה", to: "עד שעה",
+    sortTime: "מיון: זמן", sortPriority: "מיון: עדיפות", sortTask: "מיון: משימה",
+    addTask: "+ הוסף משימה", moveToScheduled: "→ ליומן היום", moveBack: "← חזרה למלאי", moveToNext: "העבר למחר",
+    done: "בוצע", delete: "מחק", category: "קטגוריה", dueDate: "תאריך יעד",
+    importToToday: "→ למלאי היום", importedBadge: "נמצא במלאי היום", inventoryEmpty: "אין עדיין פריטים בקטגוריה זו.",
+    archiveEmpty: "הארכיון ריק.", addInventoryItem: "+ הוסף פריט",
+    possibleMatch: "ייתכן שהמשימה כבר קיימת במלאי:", importInstead: "ייבא פריט זה במקום", keepNew: "השאר כחדש",
+    dashboardTitle: "דשבורד", completedToday: "הושלמו היום", completedTotal: "סה״כ בארכיון", byCategory: "לפי קטגוריה",
+    darkMode: "מצב כהה", language: "שפה", color: "צבע טקסט", bgColor: "הדגשת תא", today: "היום",
+    panelColor: "צבע רקע החלונית", cellColor: "צבע רקע ברירת מחדל לתאים", reset: "איפוס", panelColors: "צבעי חלונית",
+    categories: { pool: "מאגר (Pool)", workTasks: "משימות עבודה", fieldWork: "עבודת שטח", recurrents: "חזרות תקופתיות", easyFast: "קל / מהיר",
+      financial: "פיננסי", personalFast: "אישי מהיר", personalOut: "אישי בחוץ", personal: "אישי",
+      other: "אחר", waiting: "בהמתנה", strategic: "אסטרטגי", deadlines: "דדליין" },
+    dragHint: "גרירת הכותרת משנה מיקום החלונית (לחיצה וגרירה)", movePanelLeft: "שלח חלונית לאחור (מתחת לאחרות)", movePanelRight: "הבא חלונית לקדמה (מעל)",
+    moveUp: "הזז שורה למעלה", moveDown: "הזז שורה למטה", dragRowHint: "גרור כדי להזיז שורה זו לכל מקום ברשימה",
+    signIn:"התחברות", signUp:"יצירת חשבון", email:"אימייל", password:"סיסמה", noAccount:"אין חשבון? צור אחד", haveAccount:"יש לך חשבון? התחבר", continueOffline:"המשך בלי חשבון (מכשיר זה בלבד)", signOut:"התנתק", syncing:"מסונכרן לעננה", loadingApp:"טוען...", loginTitle:"התחבר כדי לסנכרן בין מכשירים",
+    syncSaving:"שומר...", syncError:"שגיאת סנכרון - הקש לניסיון חוזר", syncLocal:"מצב מקומי - לא מסונכרן",
+    moveToTomorrow:"העבר למחר", chooseDate:"בחר תאריך...", rowMenuHint:"קליק ימני / לחיצה ארוכה להעברה לתאריך אחר",
+    categoryNone:"בלי קטגוריה",
+    selectedCount:"{n} משימות מסומנות",
+    moveToInventory:"העבר למלאי", dueDatePick:"בחר תאריך יעד", year:"שנה",
+    restore:"שחזר להיום",
+    search:"חיפוש", searchPlaceholder:"חפש משימה בכל מקום בתכנה...", noResults:"לא נמצאו תוצאות",
+    waitingTitle:"ממתין לתשובה", waitingDateLabel:"תאריך יעד לתשובה", waitingNote:"הערה (רשות)", waitingResolve:"קיבלתי תשובה - סמן כפתור ✓", waitingCycleCount:"מחזור פינג-פונג #{n}", waitingFor:"רשימת ממתינים", newPanel:"+ חלונית חדשה", panelName:"שם החלונית", addPanel:"הוסף", waitingAutoMoved:"הועבר אוטומטית (הגיע תאריך יעד)",
+    dashToday: "הושלמו היום", dashTotal: "סה״כ בארכיון", dashCat: "לפי קטגוריה", archiveTitle: "ארכיון"
   },
   ar: {
-    appTitle: "״¬״¯ˆ„ ״§„ˆ…", dir: "rtl",
-    tabs: { daily: "״§„״¬״¯ˆ„ ״§„ˆ…", inventory: "״§„…״®״²ˆ†", archive: "״§„״£״±״´", dashboard: "„ˆ״­״© ״§„״×״­ƒ…" },
-    pool: "…״¬…ˆ״¹״© ״§„…‡״§… (POOL)", fastDoing: "…‡״§… ״³״±״¹״© (‡״§״×/״±״³״§„״©/״¨״±״¯ 5-10)",
-    scheduled: "״§„…‡״§… ״§„…״¬״¯ˆ„״©", newTasks: "…‡״§… ״¬״¯״¯״© / ״×״´״×״× / ״×״°ƒ״±״×‡״§",
-    homeBefore: "״§„…†״²„ ג€” ‚״¨„ ״§„״¹…„", toWork: " ״§„״·״±‚ ״¥„‰ ״§„״¹…„", fromWork: " ״§„״·״±‚ …† ״§„״¹…„", homeAfter: "״§„…†״²„ ג€” ״¨״¹״¯ ״§„״¹…„",
-    task: "״§„…‡…״©", time: "״§„ˆ‚״× (״¯‚‚״©)", priority: "״§„״£ˆ„ˆ״©", note: "…„״§״­״¸״©", from: "…†", to: "״¥„‰",
-    sortTime: "״×״±״×״¨: ״§„ˆ‚״×", sortPriority: "״×״±״×״¨: ״§„״£ˆ„ˆ״©", sortTask: "״×״±״×״¨: ״§„…‡…״©",
-    addTask: "+ ״¥״¶״§״© …‡…״©", moveToScheduled: "ג†’ ״¥„‰ ״¬״¯ˆ„ ״§„ˆ…", moveBack: "ג† ״±״¬ˆ״¹ „„…״®״²ˆ†", moveToNext: "†‚„ ״¥„‰ ״§„״÷״¯",
-    done: "״×…", delete: "״­״°", category: "״§„״¦״©", dueDate: "״×״§״±״® ״§„״§״³״×״­‚״§‚",
-    importToToday: "ג†’ …״¬…ˆ״¹״© ״§„ˆ…", importedBadge: "…ˆ״¬ˆ״¯  …״¬…ˆ״¹״© ״§„ˆ…", inventoryEmpty: "„״§ ״×ˆ״¬״¯ ״¹†״§״µ״±  ‡״°‡ ״§„״¦״©.",
-    archiveEmpty: "״§„״£״±״´ ״§״±״÷.", addInventoryItem: "+ ״¥״¶״§״© ״¹†״µ״±",
-    possibleMatch: "‚״¯ ״×ƒˆ† ‡״°‡ ״§„…‡…״© …ˆ״¬ˆ״¯״© ״¨״§„״¹„  ״§„…״®״²ˆ†:", importInstead: "״§״³״×״±״§״¯ ‡״°״§ ״§„״¹†״µ״± ״¨״¯„״§‹ …†‡", keepNew: "״§״­״×״¸ ƒ״¬״¯״¯",
-    dashboardTitle: "„ˆ״­״© ״§„״×״­ƒ…", completedToday: "״£†״¬״²״× ״§„ˆ…", completedTotal: "״¥״¬…״§„ ״§„״£״±״´", byCategory: "״­״³״¨ ״§„״¦״©",
-    darkMode: "״§„ˆ״¶״¹ ״§„״¯״§ƒ†", language: "״§„„״÷״©", color: "„ˆ† ״§„†״µ", bgColor: "״×״¸„„ ״§„״®„״©", today: "״§„ˆ…",
-    panelColor: "„ˆ† ״®„״© ״§„„ˆ״­״©", cellColor: "„ˆ† ״®„״© ״§„״®„״§״§ ״§„״§״×״±״§״¶", reset: "״¥״¹״§״¯״© ״¶״¨״·", panelColors: "״£„ˆ״§† ״§„„ˆ״­״©",
-    categories: { pool: "״§„…״¬…״¹ (Pool)", workTasks: "…‡״§… ״§„״¹…„", fieldWork: "״¹…„ …״¯״§†", recurrents: "…‡״§… …״×ƒ״±״±״©", easyFast: "״³‡„ / ״³״±״¹",
-      financial: "…״§„", personalFast: "״´״®״µ ״³״±״¹", personalOut: "״´״®״µ ״®״§״±״¬", personal: "״´״®״µ",
-      other: "״£״®״±‰", waiting: " ״§„״§†״×״¸״§״±", strategic: "״§״³״×״±״§״×״¬", deadlines: "…ˆ״§״¹״¯ †‡״§״¦״©" },
-    dragHint: "״§״³״­״¨ ״§„״¹†ˆ״§† „״×״÷״± ״×״±״×״¨ ״§„„ˆ״­״© (״§״¶״÷״· ˆ״§״³״­״¨)", movePanelLeft: "״¥״±״³״§„ ״§„„ˆ״­״© „„״®„", movePanelRight: "״¥״­״¶״§״± ״§„„ˆ״­״© „„״£…״§…",
-    moveUp: "†‚„ ״§„״³״·״± „„״£״¹„‰", moveDown: "†‚„ ״§„״³״·״± „„״£״³„", dragRowHint: "״§״³״­״¨ „†‚„ ‡״°״§ ״§„״³״·״± ״¥„‰ ״£ …ƒ״§†  ״§„‚״§״¦…״©",
-    signIn:"״×״³״¬„ ״§„״¯״®ˆ„", signUp:"״¥†״´״§״¡ ״­״³״§״¨", email:"״§„״¨״±״¯ ״§„״¥„ƒ״×״±ˆ†", password:"ƒ„…״© ״§„…״±ˆ״±", noAccount:"„״§ ˆ״¬״¯ ״­״³״§״¨״ ״£†״´״¦ ˆ״§״­״¯‹״§", haveAccount:"„״¯ƒ ״­״³״§״¨״ ״³״¬„ ״§„״¯״®ˆ„", continueOffline:"״§„…״×״§״¨״¹״© ״¨״¯ˆ† ״­״³״§״¨ (‡״°״§ ״§„״¬‡״§״² ‚״·)", signOut:"״×״³״¬„ ״§„״®״±ˆ״¬", syncing:"…״×״²״§…† …״¹ ״§„״³״­״§״¨״©", loadingApp:"״¬״§״± ״§„״×״­…„...", loginTitle:"״³״¬„ ״§„״¯״®ˆ„ „„…״²״§…†״© ״¨† ״§„״£״¬‡״²״©",
-    syncSaving:"״¬״§״± ״§„״­״¸...", syncError:"״®״·״£  ״§„…״²״§…†״© - ״§״¶״÷״· „״¥״¹״§״¯״© ״§„…״­״§ˆ„״©", syncLocal:"…״­„ ‚״· - ״÷״± …״×״²״§…†",
-    moveToTomorrow:"†‚„ ״¥„‰ ״§„״÷״¯", chooseDate:"״§״®״×״± ״×״§״±״®‹״§...", rowMenuHint:"ƒ„ƒ …† / ״¶״÷״· …״·ˆ„ „†‚„ ״§„…‡…״© ״¥„‰ ״×״§״±״® ״¢״®״±",
-    categoryNone:"״¨״¯ˆ† ״¦״©",
-    selectedCount:"״×… ״×״­״¯״¯ {n} …‡״§…",
-    moveToInventory:"†‚„ ״¥„‰ ״§„…״®״²ˆ†", dueDatePick:"״§״®״×״± ״×״§״±״® ״§„״§״³״×״­‚״§‚", year:"״§„״³†״©",
-    restore:"״§״³״×״¹״§״¯״© ״¥„‰ ״§„ˆ…",
-    search:"״¨״­״«", searchPlaceholder:"״¨״­״« ״¹† …‡…״©  ƒ„ …ƒ״§†...", noResults:"„… ״×… ״§„״¹״«ˆ״± ״¹„‰ †״×״§״¦״¬",
-    waitingTitle:" ״§†״×״¸״§״± ״§„״±״¯", waitingDateLabel:"״§„״±״¯ ״§„…״×ˆ‚״¹ ״¨״×״§״±״®", waitingNote:"…„״§״­״¸״© (״§״®״×״§״±)", waitingResolve:"״×… ״§„״±״¯ - ״×״­״¯״¯ ƒ…״­„ˆ„ ג“", waitingCycleCount:"״¯ˆ״±״© ״¨†״¬-״¨ˆ†״¬ #{n}", waitingFor:"‚״§״¦…״© ״§„…†״×״¸״±†", newPanel:"+ „ˆ״­״© ״¬״¯״¯״©", panelName:"״§״³… ״§„„ˆ״­״©", addPanel:"״¥״¶״§״©", waitingAutoMoved:"†‚„ ״×„‚״§״¦ (״×״§״±״® ״§„״§״³״×״­‚״§‚),",
-    dashToday: "״£†״¬״²״× ״§„ˆ…", dashTotal: "״¥״¬…״§„ ״§„״£״±״´", dashCat: "״­״³״¨ ״§„״¦״©", archiveTitle: "״§„״£״±״´"
+    appTitle: "جدولي اليومي", dir: "rtl",
+    tabs: { daily: "الجدول اليومي", inventory: "المخزون", archive: "الأرشيف", dashboard: "لوحة التحكم" },
+    pool: "مجموعة المهام (POOL)", fastDoing: "مهام سريعة (هاتف/رسالة/بريد 5-10)",
+    scheduled: "المهام المجدولة", newTasks: "مهام جديدة / تشتيت / تذكرتها",
+    homeBefore: "المنزل — قبل العمل", toWork: "في الطريق إلى العمل", fromWork: "في الطريق من العمل", homeAfter: "المنزل — بعد العمل",
+    task: "المهمة", time: "الوقت (دقيقة)", priority: "الأولوية", note: "ملاحظة", from: "من", to: "إلى",
+    sortTime: "ترتيب: الوقت", sortPriority: "ترتيب: الأولوية", sortTask: "ترتيب: المهمة",
+    addTask: "+ إضافة مهمة", moveToScheduled: "→ إلى جدول اليوم", moveBack: "← رجوع للمخزون", moveToNext: "نقل إلى الغد",
+    done: "تم", delete: "حذف", category: "الفئة", dueDate: "تاريخ الاستحقاق",
+    importToToday: "→ مجموعة اليوم", importedBadge: "موجود في مجموعة اليوم", inventoryEmpty: "لا توجد عناصر في هذه الفئة.",
+    archiveEmpty: "الأرشيف فارغ.", addInventoryItem: "+ إضافة عنصر",
+    possibleMatch: "قد تكون هذه المهمة موجودة بالفعل في المخزون:", importInstead: "استيراد هذا العنصر بدلاً منه", keepNew: "احتفظ كجديد",
+    dashboardTitle: "لوحة التحكم", completedToday: "أُنجزت اليوم", completedTotal: "إجمالي الأرشيف", byCategory: "حسب الفئة",
+    darkMode: "الوضع الداكن", language: "اللغة", color: "لون النص", bgColor: "تظليل الخلية", today: "اليوم",
+    panelColor: "لون خلفية اللوحة", cellColor: "لون خلفية الخلايا الافتراضي", reset: "إعادة ضبط", panelColors: "ألوان اللوحة",
+    categories: { pool: "المجمع (Pool)", workTasks: "مهام العمل", fieldWork: "عمل ميداني", recurrents: "مهام متكررة", easyFast: "سهل / سريع",
+      financial: "مالي", personalFast: "شخصي سريع", personalOut: "شخصي خارجي", personal: "شخصي",
+      other: "أخرى", waiting: "في الانتظار", strategic: "استراتيجي", deadlines: "مواعيد نهائية" },
+    dragHint: "اسحب العنوان لتغيير ترتيب اللوحة (اضغط واسحب)", movePanelLeft: "إرسال اللوحة للخلف", movePanelRight: "إحضار اللوحة للأمام",
+    moveUp: "نقل السطر للأعلى", moveDown: "نقل السطر للأسفل", dragRowHint: "اسحب لنقل هذا السطر إلى أي مكان في القائمة",
+    signIn:"تسجيل الدخول", signUp:"إنشاء حساب", email:"البريد الإلكتروني", password:"كلمة المرور", noAccount:"لا يوجد حساب؟ أنشئ واحدًا", haveAccount:"لديك حساب؟ سجل الدخول", continueOffline:"المتابعة بدون حساب (هذا الجهاز فقط)", signOut:"تسجيل الخروج", syncing:"متزامن مع السحابة", loadingApp:"جار التحميل...", loginTitle:"سجل الدخول للمزامنة بين الأجهزة",
+    syncSaving:"جارٍ الحفظ...", syncError:"خطأ في المزامنة - اضغط لإعادة المحاولة", syncLocal:"محلي فقط - غير متزامن",
+    moveToTomorrow:"نقل إلى الغد", chooseDate:"اختر تاريخًا...", rowMenuHint:"كليك يمين / ضغط مطول لنقل المهمة إلى تاريخ آخر",
+    categoryNone:"بدون فئة",
+    selectedCount:"تم تحديد {n} مهام",
+    moveToInventory:"نقل إلى المخزون", dueDatePick:"اختر تاريخ الاستحقاق", year:"السنة",
+    restore:"استعادة إلى اليوم",
+    search:"بحث", searchPlaceholder:"بحث عن مهمة في كل مكان...", noResults:"لم يتم العثور على نتائج",
+    waitingTitle:"في انتظار الرد", waitingDateLabel:"الرد المتوقع بتاريخ", waitingNote:"ملاحظة (اختياري)", waitingResolve:"تم الرد - تحديد كمحلول ✓", waitingCycleCount:"دورة بينج-بونج #{n}", waitingFor:"قائمة المنتظرين", newPanel:"+ لوحة جديدة", panelName:"اسم اللوحة", addPanel:"إضافة", waitingAutoMoved:"نقل تلقائي (تاريخ الاستحقاق),",
+    dashToday: "أُنجزت اليوم", dashTotal: "إجمالي الأرشيف", dashCat: "حسب الفئة", archiveTitle: "الأرشيف"
   }
 };
 const CATEGORY_KEYS = ["pool","workTasks","fieldWork","recurrents","easyFast","financial","personalFast","personalOut","personal","other","waiting","strategic","deadlines"];
@@ -145,10 +146,10 @@ const PANEL_LABELS = { pool:"Pool", fastDoing:"Fast Doing", scheduled:"Scheduled
 function diffLabel(before, after){
   if(!before || !after) return "Action";
   const s = JSON.stringify;
-  if(s(before.settings)!==s(after.settings)) return "ג™ Settings";
-  if(s(before.layout)!==s(after.layout)) return "נ¨ Layout / colors";
-  if(s(before.archive)!==s(after.archive)) return "נ“¦ Archive";
-  if(s(before.inventory)!==s(after.inventory)) return "נ—ƒ Inventory";
+  if(s(before.settings)!==s(after.settings)) return "⚙ Settings";
+  if(s(before.layout)!==s(after.layout)) return "🎨 Layout / colors";
+  if(s(before.archive)!==s(after.archive)) return "📦 Archive";
+  if(s(before.inventory)!==s(after.inventory)) return "🗃 Inventory";
   const dates = new Set([...Object.keys(before.daily||{}), ...Object.keys(after.daily||{})]);
   for(const dt of Array.from(dates).sort().reverse()){
     const bd = before.daily?.[dt], ad = after.daily?.[dt];
@@ -157,21 +158,21 @@ function diffLabel(before, after){
       const bl=bd?.[k]||[], al=ad?.[k]||[];
       if(s(bl)!==s(al)){
         const pl = PANEL_LABELS[k]||k;
-        if(al.length>bl.length) return `ג• Task in ${pl} (${dt})`;
-        if(al.length<bl.length) return `נ—‘ Task from ${pl} (${dt})`;
-        return `ג Edit in ${pl} (${dt})`;
+        if(al.length>bl.length) return `➕ Task in ${pl} (${dt})`;
+        if(al.length<bl.length) return `🗑 Task from ${pl} (${dt})`;
+        return `✏ Edit in ${pl} (${dt})`;
       }
     }
     for(const k of ['homeBefore','toWork','fromWork','homeAfter']){
       const bl=(bd?.sections?.[k])||[], al=(ad?.sections?.[k])||[];
       if(s(bl)!==s(al)){
         const pl = PANEL_LABELS[k]||k;
-        if(al.length>bl.length) return `ג• Task in ${pl} (${dt})`;
-        if(al.length<bl.length) return `נ—‘ Task from ${pl} (${dt})`;
-        return `ג Edit in ${pl} (${dt})`;
+        if(al.length>bl.length) return `➕ Task in ${pl} (${dt})`;
+        if(al.length<bl.length) return `🗑 Task from ${pl} (${dt})`;
+        return `✏ Edit in ${pl} (${dt})`;
       }
     }
-    return `נ“… Daily (${dt})`;
+    return `📅 Daily (${dt})`;
   }
   return "Action";
 }
@@ -185,12 +186,12 @@ function searchAll(data, query, t){
     const day = data.daily[dt];
     ["pool","fastDoing","scheduled","newTasks"].forEach(key=>{
       (day[key]||[]).forEach(item=>{
-        if((item.text||"").toLowerCase().includes(q)) results.push({tabTarget:"daily", date:dt, panelId:key, itemId:item.id, text:item.text, location:`${t[key]} ֲ· ${dt}`});
+        if((item.text||"").toLowerCase().includes(q)) results.push({tabTarget:"daily", date:dt, panelId:key, itemId:item.id, text:item.text, location:`${t[key]} · ${dt}`});
       });
     });
     ["homeBefore","toWork","fromWork","homeAfter"].forEach(key=>{
       ((day.sections&&day.sections[key])||[]).forEach(item=>{
-        if((item.text||"").toLowerCase().includes(q)) results.push({tabTarget:"daily", date:dt, panelId:key, itemId:item.id, text:item.text, location:`${t[key]} ֲ· ${dt}`});
+        if((item.text||"").toLowerCase().includes(q)) results.push({tabTarget:"daily", date:dt, panelId:key, itemId:item.id, text:item.text, location:`${t[key]} · ${dt}`});
       });
     });
   });
@@ -200,7 +201,7 @@ function searchAll(data, query, t){
     });
   });
   (data.archive||[]).forEach(entry=>{
-    if((entry.text||"").toLowerCase().includes(q)) results.push({tabTarget:"archive", panelId:"archive", itemId:entry.id, text:entry.text, location:`${t.archiveTitle} ֲ· ${entry.date}`});
+    if((entry.text||"").toLowerCase().includes(q)) results.push({tabTarget:"archive", panelId:"archive", itemId:entry.id, text:entry.text, location:`${t.archiveTitle} · ${entry.date}`});
   });
   return results.slice(0,30);
 }
@@ -281,17 +282,17 @@ const defaultData = () => {
 };
 
 /* ================================================================
-   HAITHAMAPPS ג€” OneDrive-First Architecture  (v3.0)
+   HAITHAMAPPS — OneDrive-First Architecture  (v3.0)
    ================================================================
    All app data lives in:
      OneDrive / Apps / HaithamApps / daily-schedule.json
 
    Same Azure App Registration serves ALL your apps:
-     daily-schedule.json  ג† this app
-     malal.json           ג† Malal (NII) app
-     financial.json       ג† Financial Management app
-     etom.json            ג† ETOM app
-     shared-profile.json  ג† shared settings across all apps
+     daily-schedule.json  ← this app
+     malal.json           ← Malal (NII) app
+     financial.json       ← Financial Management app
+     etom.json            ← ETOM app
+     shared-profile.json  ← shared settings across all apps
 
    Cross-app communication:
      Any app can READ from any other app's JSON file.
@@ -313,7 +314,7 @@ const HAITHAM_APPS = {
 
 const GRAPH_BASE = "https://graph.microsoft.com/v1.0";
 
-/* ג”€ג”€ Graph API helpers ג”€ג”€ */
+/* ── Graph API helpers ── */
 async function graphGet(token, path){
   const r = await fetch(`${GRAPH_BASE}${path}`, { headers:{ Authorization:`Bearer ${token}` } });
   if(r.status===404) return null;
@@ -331,7 +332,7 @@ async function graphPut(token, path, body){
 }
 function odFilePath(filename){ return `/me/drive/special/approot:/${filename}:/content`; }
 
-/* ג”€ג”€ MSAL helpers ג”€ג”€ */
+/* ── MSAL helpers ── */
 const OD_SCOPES = ["Files.ReadWrite.AppFolder","User.Read"];
 
 function buildMsal(clientId){
@@ -357,7 +358,7 @@ async function odGetToken(instance){
   }
 }
 
-/* ג”€ג”€ JSON file export/import (always available, no setup needed) ג”€ג”€ */
+/* ── JSON file export/import (always available, no setup needed) ── */
 function exportJsonFile(data, filename){
   const blob = new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
   const url  = URL.createObjectURL(blob);
@@ -380,7 +381,7 @@ function importJsonFile(onData){
 /* ================================================================ */
 
 /* Build/version marker - updated each time a new file is generated, shown in the UI footer */
-const APP_BUILD = "v3.2.1 ג€” 2026-06-27 14:00";
+const APP_BUILD = "v3.2.2 — 2026-06-27 15:00";
 
 const STORAGE_KEY = "daily-task-manager-data";
 /* ---------------- merge two data snapshots (for multi-device sync) ---------------- */
@@ -497,7 +498,7 @@ function RichTextBox({ item, onChange, cellBg, dir, t, autoFocus }) {
     const expected = item.html || escapeHtml(item.text) || "";
     // If this matches what we last emitted, it's our own change reflected back - skip
     if(lastEmittedRef.current === expected) return;
-    // It's an external change (undo/redo/sync) ג†’ update the DOM
+    // It's an external change (undo/redo/sync) → update the DOM
     const wasFocused = document.activeElement === ref.current;
     ref.current.innerHTML = expected;
     lastEmittedRef.current = expected;
@@ -599,7 +600,7 @@ function StyleMenu({ item, onChange, t }) {
   };
   return (
     <div className="relative inline-block">
-      <button ref={btnRef} onClick={toggle} className="p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base" title={t.color}>נ¨</button>
+      <button ref={btnRef} onClick={toggle} className="p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base" title={t.color}>🎨</button>
       {open && createPortal(
         <div className="fixed inset-0 z-[999]" onClick={()=>setOpen(false)}>
           <div onClick={(e)=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-2 w-44 text-xs"
@@ -610,7 +611,7 @@ function StyleMenu({ item, onChange, t }) {
             <Swatches list={BG_SWATCHES} onPick={(c)=>onChange({...item.style,bg:c})} />
             <div className="flex gap-2">
               <button onClick={()=>onChange({...item.style,bold:!item.style.bold})} className={`px-2 py-0.5 rounded border ${item.style.bold?"bg-slate-300 dark:bg-slate-600":""}`}>B</button>
-              <button onClick={()=>onChange({...item.style,star:!item.style.star})} className={`px-2 py-0.5 rounded border ${item.style.star?"bg-amber-300":""}`}>ג˜…</button>
+              <button onClick={()=>onChange({...item.style,star:!item.style.star})} className={`px-2 py-0.5 rounded border ${item.style.star?"bg-amber-300":""}`}>★</button>
             </div>
           </div>
         </div>, document.body)}
@@ -631,7 +632,7 @@ function PanelColorMenu({ colors, onChange, t }) {
   };
   return (
     <div className="relative inline-block">
-      <button ref={btnRef} onClick={toggle} className="p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base" title={t.panelColors}>נ–</button>
+      <button ref={btnRef} onClick={toggle} className="p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base" title={t.panelColors}>🖌</button>
       {open && createPortal(
         <div className="fixed inset-0 z-[999]" onClick={()=>setOpen(false)}>
           <div onClick={(e)=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-2 w-48 text-xs"
@@ -662,8 +663,8 @@ function FieldInput({ name, item, update, t, cellBg }) {
 }
 const WEEKDAY_LABELS = {
   en: ["S","M","T","W","T","F","S"],
-  he: ["׳","׳‘","׳’","׳“","׳”","׳•","׳©"],
-  ar: ["״­","†","״«","״±","״®","״¬","״³"]
+  he: ["א","ב","ג","ד","ה","ו","ש"],
+  ar: ["ح","ن","ث","ر","خ","ج","س"]
 };
 function MiniCalendar({ onPick, t, lang, initialDate }) {
   const [view, setView] = useState(()=>{
@@ -683,15 +684,15 @@ function MiniCalendar({ onPick, t, lang, initialDate }) {
   return (
     <div className="text-xs" style={{direction:"ltr"}}>
       <div className="flex items-center justify-between mb-1 gap-1">
-        <button onClick={()=>setView(v=>{ let m=v.m-1,y=v.y; if(m<0){m=11;y--;} return {y,m}; })} className="px-1.5 py-0.5 border rounded">ג€¹</button>
+        <button onClick={()=>setView(v=>{ let m=v.m-1,y=v.y; if(m<0){m=11;y--;} return {y,m}; })} className="px-1.5 py-0.5 border rounded">‹</button>
         <span className="font-semibold flex-1 text-center">{monthLabel}</span>
-        <button onClick={()=>setView(v=>{ let m=v.m+1,y=v.y; if(m>11){m=0;y++;} return {y,m}; })} className="px-1.5 py-0.5 border rounded">ג€÷</button>
+        <button onClick={()=>setView(v=>{ let m=v.m+1,y=v.y; if(m>11){m=0;y++;} return {y,m}; })} className="px-1.5 py-0.5 border rounded">›</button>
       </div>
       <div className="flex items-center justify-center gap-1 mb-1">
-        <button onClick={()=>setView(v=>({...v,y:v.y-1}))} className="px-1.5 py-0.5 border rounded">ֲ«</button>
+        <button onClick={()=>setView(v=>({...v,y:v.y-1}))} className="px-1.5 py-0.5 border rounded">«</button>
         <input type="number" value={view.y} onChange={(e)=>{ const y=parseInt(e.target.value,10); if(!isNaN(y)) setView(v=>({...v,y})); }}
           className="w-16 text-center border rounded bg-transparent" />
-        <button onClick={()=>setView(v=>({...v,y:v.y+1}))} className="px-1.5 py-0.5 border rounded">ֲ»</button>
+        <button onClick={()=>setView(v=>({...v,y:v.y+1}))} className="px-1.5 py-0.5 border rounded">»</button>
       </div>
       <div className="grid grid-cols-7 gap-0.5 text-center opacity-60 mb-0.5">
         {weekdays.map((w,i)=><div key={i}>{w}</div>)}
@@ -720,7 +721,7 @@ function RowContextMenu({ pos, onClose, onTomorrow, onPick, onDelete, onMoveToIn
         {(onStrike||onBold) && (
           <div className="flex gap-1 mb-2 pb-2 border-b border-slate-200 dark:border-slate-700">
             {onBold && <button onClick={()=>{ onBold(); onClose(); }} className="flex-1 px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10 font-bold text-center">B</button>}
-            {onStrike && <button onClick={()=>{ onStrike(); onClose(); }} className="flex-1 px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10 line-through text-center">Sּ¶</button>}
+            {onStrike && <button onClick={()=>{ onStrike(); onClose(); }} className="flex-1 px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10 line-through text-center">S̶</button>}
           </div>
         )}
         {!showCal ? (
@@ -755,7 +756,7 @@ function DueDateMenu({ value, onChange, t, lang }) {
     <div className="relative inline-block">
       <button ref={btnRef} onClick={toggle} title={t.dueDatePick}
         className={`text-[11px] px-1.5 py-0.5 rounded border flex-shrink-0 ${value?"bg-indigo-50 dark:bg-indigo-900/30 border-indigo-300":"opacity-60"}`}>
-        נ“… {value || t.dueDate}
+        📅 {value || t.dueDate}
       </button>
       {open && createPortal(
         <div className="fixed inset-0 z-[999]" onClick={()=>setOpen(false)}>
@@ -783,7 +784,7 @@ function CategoryMenu({ category, onChange, t }) {
   };
   return (
     <div className="relative inline-block">
-      <button ref={btnRef} onClick={toggle} title={t.category} className={`p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base flex-shrink-0 ${category?"ring-1 ring-indigo-400":""}`}>נ·</button>
+      <button ref={btnRef} onClick={toggle} title={t.category} className={`p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-base flex-shrink-0 ${category?"ring-1 ring-indigo-400":""}`}>🏷</button>
       {open && createPortal(
         <div className="fixed inset-0 z-[999]" onClick={()=>setOpen(false)}>
           <div onClick={(e)=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-1 w-44 text-xs max-h-64 overflow-y-auto"
@@ -832,13 +833,13 @@ function WaitingButton({ item, onUpdate, showDate, t, lang }) {
       <button ref={btnRef} onClick={onClick}
         title={activeWait ? t.waitingResolve : t.waitingTitle}
         className={`px-1.5 py-0.5 rounded border text-[11px] flex-shrink-0 whitespace-nowrap transition-colors ${activeWait?"bg-orange-100 dark:bg-orange-900/40 border-orange-400 text-orange-700 dark:text-orange-300 font-bold":"opacity-50 hover:opacity-100"}`}>
-        {activeWait ? (showDate ? `ג³ ${activeWait.expectedDate}` : "ג³") : `ג³${log.length>0?` ֳ—${log.length}`:""}`}
+        {activeWait ? (showDate ? `⏳ ${activeWait.expectedDate}` : "⏳") : `⏳${log.length>0?` ×${log.length}`:""}`}
       </button>
       {open && createPortal(
         <div className="fixed inset-0 z-[999]" onClick={()=>setOpen(false)}>
           <div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-3 w-60 text-xs"
             style={{top:pos.top, left:pos.left}}>
-            <div className="font-semibold mb-1 text-orange-600 dark:text-orange-400">ג³ {t.waitingTitle}</div>
+            <div className="font-semibold mb-1 text-orange-600 dark:text-orange-400">⏳ {t.waitingTitle}</div>
             {log.length>0 && <div className="mb-2 text-[10px] opacity-60 bg-orange-50 dark:bg-orange-900/20 rounded px-1.5 py-0.5">{t.waitingCycleCount.replace("{n}", log.length+1)}</div>}
             <div className="mb-1 opacity-70 font-medium">{t.waitingDateLabel}:</div>
             <MiniCalendar lang={lang} t={t} onPick={ds=>startWaiting(ds)} />
@@ -867,7 +868,7 @@ function InventoryRow({ item, cat, cellBg, t, lang, onUpdate, onDelete, onImport
     <div ref={rowRef} data-row-index={rowIndex} data-item-id={item.id} onContextMenu={openCtxMenu} title={t.rowMenuHint}
       className={`flex items-center gap-1 border-b border-slate-200 dark:border-slate-700 py-0.5 text-sm overflow-x-auto ${highlighted?"ring-2 ring-yellow-400 bg-yellow-100/70 dark:bg-yellow-900/40 animate-pulse":""}`} style={{direction:"ltr", backgroundColor:highlighted?undefined:(cellBg||"transparent"), color:textColor}}>
       <button onPointerDown={handleDragStart} style={{touchAction:"none"}}
-        title={t.dragRowHint} className="cursor-move text-sm px-1 opacity-40 hover:opacity-100 flex-shrink-0 select-none">ג ¿</button>
+        title={t.dragRowHint} className="cursor-move text-sm px-1 opacity-40 hover:opacity-100 flex-shrink-0 select-none">⠿</button>
       {ctxMenu && <RowContextMenu pos={ctxMenu} onClose={()=>setCtxMenu(null)} lang={lang} t={t} onDelete={onDelete} />}
       <AutoTextarea dir="auto" value={item.text} placeholder={t.task} style={{}} cellBg={cellBg} onChange={(v)=>onUpdate({...item,text:v})} />
       <DueDateMenu value={item.dueDate} onChange={(ds)=>onUpdate({...item,dueDate:ds})} t={t} lang={lang} />
@@ -932,7 +933,7 @@ function TaskRow(props) {
     <div className="flex flex-col gap-2 mb-2 pb-2 border-b border-slate-200 dark:border-slate-700" style={{direction:"ltr"}}>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="flex items-center gap-1">
-          <span className="text-xs opacity-60">ג±</span>
+          <span className="text-xs opacity-60">⏱</span>
           <input value={item.time} onChange={(e)=>update({time:e.target.value})} placeholder={t.time}
             className="w-14 text-center border border-slate-300 dark:border-slate-600 rounded text-xs bg-transparent" />
         </span>
@@ -958,7 +959,7 @@ function TaskRow(props) {
           <button key={i} onClick={()=>update({style:{...item.style,bg:c}})} title={c||t.reset} className="w-5 h-5 rounded-full border border-slate-400 flex-shrink-0" style={{background:c||"transparent"}} />
         ))}
         <button onClick={()=>update({style:{...item.style,bold:!item.style.bold}})} className={`px-2 py-0.5 rounded border text-xs ${item.style.bold?"bg-slate-300 dark:bg-slate-600":""}`}>B</button>
-        <button onClick={()=>update({style:{...item.style,star:!item.style.star}})} className={`px-2 py-0.5 rounded border text-xs ${item.style.star?"bg-amber-300":""}`}>ג˜…</button>
+        <button onClick={()=>update({style:{...item.style,star:!item.style.star}})} className={`px-2 py-0.5 rounded border text-xs ${item.style.star?"bg-amber-300":""}`}>★</button>
       </div>
     </div>
   ) : null;
@@ -976,16 +977,16 @@ function TaskRow(props) {
         onMoveToInventory={()=> bulkMode ? (onBulkMoveToInventory && onBulkMoveToInventory()) : (onMoveToInventory && onMoveToInventory())}
         onDelete={()=> bulkMode ? (onBulkDelete && onBulkDelete()) : (onDelete && onDelete())} />}
       <button onPointerDown={handleDragStart} style={{touchAction:"none"}}
-        title={t.dragRowHint} className="cursor-move text-sm px-1 opacity-40 hover:opacity-100 flex-shrink-0 select-none">ג ¿</button>
-      <button onClick={()=>update({done:!item.done})} title={t.done} className={`flex-shrink-0 w-5 h-5 rounded border flex items-center justify-center text-xs ${item.done?"bg-emerald-500 border-emerald-500 text-white":"border-slate-400"}`}>{item.done?"ג“":""}</button>
+        title={t.dragRowHint} className="cursor-move text-sm px-1 opacity-40 hover:opacity-100 flex-shrink-0 select-none">⠿</button>
+      <button onClick={()=>update({done:!item.done})} title={t.done} className={`flex-shrink-0 w-5 h-5 rounded border flex items-center justify-center text-xs ${item.done?"bg-emerald-500 border-emerald-500 text-white":"border-slate-400"}`}>{item.done?"✓":""}</button>
       <WaitingButton item={item} onUpdate={onUpdate} showDate={showWaitingDate} t={t} lang={lang} />
-      {item.style.star && <span className="text-amber-500 flex-shrink-0">ג˜…</span>}
+      {item.style.star && <span className="text-amber-500 flex-shrink-0">★</span>}
       {prefixFields.map(name=><FieldInput key={name} name={name} item={item} update={update} t={t} cellBg={cellBg} />)}
       <RichTextBox item={item} onChange={(patch)=>update(patch)} cellBg={cellBg} dir={dir} t={t} autoFocus={autoFocus} />
       {taskNumber!=null && <span className="text-base font-black select-none flex-shrink-0 min-w-[1.5rem] text-center opacity-70">{taskNumber}</span>}
       {!mobile && (
         <span className="flex items-center flex-shrink-0" title={t.time}>
-          <span className="text-xs opacity-50 px-0.5">ג±</span>
+          <span className="text-xs opacity-50 px-0.5">⏱</span>
           <input value={item.time} onChange={(e)=>update({time:e.target.value})} placeholder={t.time}
             className="w-12 text-center outline-none border-l border-slate-200 dark:border-slate-700 text-xs"
             style={{ backgroundColor: cellBg || "transparent" }} />
@@ -993,7 +994,7 @@ function TaskRow(props) {
       )}
       {!mobile && suffixFields.map(name=><FieldInput key={name} name={name} item={item} update={update} t={t} cellBg={cellBg} />)}
       {!mobile && <CategoryMenu category={item.category} onChange={(c)=>update({category:c})} t={t} />}
-      {onMove && <button onClick={onMove} title={moveLabel} className="p-1.5 rounded bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-900/40 dark:hover:bg-indigo-800/60 border border-indigo-300 dark:border-indigo-700 flex-shrink-0 text-base font-bold text-indigo-700 dark:text-indigo-300">{moveDirection==="left"?"ג†":"ג†’"}</button>}
+      {onMove && <button onClick={onMove} title={moveLabel} className="p-1.5 rounded bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-900/40 dark:hover:bg-indigo-800/60 border border-indigo-300 dark:border-indigo-700 flex-shrink-0 text-base font-bold text-indigo-700 dark:text-indigo-300">{moveDirection==="left"?"←":"→"}</button>}
       {!mobile && <StyleMenu item={item} onChange={(style)=>update({style})} t={t} />}
     </div>
   );
@@ -1263,7 +1264,7 @@ function PanelBox({ id, title, actions, render, layout, onResize, onColor, onMov
         style={{touchAction:"none", backgroundColor: panelBg||undefined, color: panelTextColor}}
         className={`px-3 py-2 font-semibold text-sm flex items-center justify-between gap-2 flex-wrap cursor-move select-none flex-shrink-0 rounded-t-xl ${panelBg?"":"bg-slate-100 dark:bg-slate-800"}`}>
         <span className="flex items-center gap-1">
-          <span className="opacity-40 cursor-move" title={t.dragHint}>ג ¿</span>
+          <span className="opacity-40 cursor-move" title={t.dragHint}>⠿</span>
           {title}
         </span>
         <div className="flex gap-1 items-center" onPointerDown={(e)=>e.stopPropagation()}>{actions}<PanelColorMenu colors={colors} onChange={(patch)=>onColor(id,patch)} t={t} /></div>
@@ -1372,7 +1373,7 @@ function PanelBoxMobile({ id, title, actions, render, layout, onColor, onMarquee
       <div style={{backgroundColor: panelBg||undefined, color: panelTextColor}}
         className={`px-3 py-3 font-semibold flex items-center justify-between gap-2 flex-wrap rounded-t-xl ${panelBg?"":"bg-slate-100 dark:bg-slate-800"}`}>
         <button className="flex items-center gap-2 flex-1 text-left" onClick={()=>setCollapsed(c=>!c)}>
-          <span className="text-base">{collapsed?"ג–¶":"ג–¼"}</span>
+          <span className="text-base">{collapsed?"▶":"▼"}</span>
           <span className="text-sm font-semibold">{title}</span>
         </button>
         <div className="flex gap-1 items-center" onClick={e=>e.stopPropagation()}>{actions}<PanelColorMenu colors={colors} onChange={(patch)=>onColor(id,patch)} t={t} /></div>
@@ -1404,7 +1405,7 @@ function PanelBoxTablet({ id, title, actions, render, layout, onColor, onMarquee
       <div style={{backgroundColor: panelBg||undefined, color: panelTextColor}}
         className={`px-3 py-2 font-semibold text-sm flex items-center justify-between gap-2 rounded-t-xl ${panelBg?"":"bg-slate-100 dark:bg-slate-800"}`}>
         <button className="flex items-center gap-1.5 flex-1 text-left" onClick={()=>setCollapsed(c=>!c)}>
-          <span className="opacity-60 text-xs">{collapsed?"ג–¶":"ג–¼"}</span>
+          <span className="opacity-60 text-xs">{collapsed?"▶":"▼"}</span>
           <span>{title}</span>
         </button>
         <div className="flex gap-1 items-center">{actions}<PanelColorMenu colors={colors} onChange={(patch)=>onColor(id,patch)} t={t} /></div>
@@ -1443,7 +1444,7 @@ function AddPanelButton({ tab, onAdd, t }) {
   );
 }
 
-/* ג”€ג”€ OneDrive Settings Modal ג”€ג”€ */
+/* ── OneDrive Settings Modal ── */
 function OneDriveSettingsModal({ onClose, onClientIdSave, currentClientId, lang }) {
   const [cid, setCid] = useState(currentClientId||"");
   const he = lang==="he";
@@ -1451,23 +1452,23 @@ function OneDriveSettingsModal({ onClose, onClientIdSave, currentClientId, lang 
     <div className="fixed inset-0 z-[999] bg-black/50 flex items-center justify-center p-4">
       <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl p-6 w-full max-w-lg text-sm" onClick={e=>e.stopPropagation()}>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-bold">נ”— OneDrive Sync Setup</h2>
-          <button onClick={onClose} className="p-1.5 text-xl opacity-60">ג•</button>
+          <h2 className="text-lg font-bold">🔗 OneDrive Sync Setup</h2>
+          <button onClick={onClose} className="p-1.5 text-xl opacity-60">✕</button>
         </div>
 
         <details className="mb-4 border rounded-lg overflow-hidden">
           <summary className="px-3 py-2 cursor-pointer font-semibold bg-slate-50 dark:bg-slate-800">
-            נ“‹ {he?"׳”׳•׳¨׳׳•׳× ׳¨׳™׳©׳•׳ (5 ׳“׳§׳•׳×, ׳—׳™׳ ׳)":"Setup instructions (5 min, free)"}
+            📋 {he?"הוראות רישום (5 דקות, חינם)":"Setup instructions (5 min, free)"}
           </summary>
           <ol className="px-4 py-3 space-y-1.5 text-xs leading-relaxed opacity-90">
-            <li><b>1.</b> {he?"׳₪׳×׳—":"Go to"} <a href="https://portal.azure.com" target="_blank" rel="noreferrer" className="text-indigo-600 underline">portal.azure.com</a> {he?"׳•׳”׳×׳—׳‘׳¨ ׳¢׳ ׳—׳©׳‘׳•׳ Microsoft ׳©׳׳":"and sign in with your Microsoft account"}</li>
-            <li><b>2.</b> {he?"׳—׳₪׳©":"Search"} <b>"App registrations"</b> ג†’ <b>"New registration"</b></li>
-            <li><b>3.</b> {he?"׳©׳":"Name"}: <code className="bg-slate-100 dark:bg-slate-700 px-1 rounded">My Daily Schedule</code></li>
-            <li><b>4.</b> {he?"׳¡׳•׳’ ׳—׳©׳‘׳•׳":"Account types"}: <b>"Personal Microsoft accounts only"</b></li>
-            <li><b>5.</b> {he?"׳›׳×׳•׳‘׳× redirect":"Redirect URI"}: <b>Single-page application</b> ג†’ <code className="bg-slate-100 dark:bg-slate-700 px-1 rounded break-all">{window.location.href.split("?")[0].split("#")[0]}</code></li>
-            <li><b>6.</b> {he?"׳׳—׳¥":"Click"} <b>Register</b> ג†’ {he?"׳”׳¢׳×׳§ ׳׳×":"Copy the"} <b>Application (client) ID</b></li>
-            <li><b>7.</b> {he?'׳׳ ׳-"Authentication" ג†’ ׳¡׳׳ "Access tokens" ׳•-"ID tokens" ג†’ Save':'Go to "Authentication" ג†’ check "Access tokens" and "ID tokens" ג†’ Save'}</li>
-            <li><b>8.</b> {he?"׳”׳“׳‘׳§ ׳›׳׳ ׳׳× ׳”-Client ID":"Paste the Client ID below"} ג…</li>
+            <li><b>1.</b> {he?"פתח":"Go to"} <a href="https://portal.azure.com" target="_blank" rel="noreferrer" className="text-indigo-600 underline">portal.azure.com</a> {he?"והתחבר עם חשבון Microsoft שלך":"and sign in with your Microsoft account"}</li>
+            <li><b>2.</b> {he?"חפש":"Search"} <b>"App registrations"</b> → <b>"New registration"</b></li>
+            <li><b>3.</b> {he?"שם":"Name"}: <code className="bg-slate-100 dark:bg-slate-700 px-1 rounded">My Daily Schedule</code></li>
+            <li><b>4.</b> {he?"סוג חשבון":"Account types"}: <b>"Personal Microsoft accounts only"</b></li>
+            <li><b>5.</b> {he?"כתובת redirect":"Redirect URI"}: <b>Single-page application</b> → <code className="bg-slate-100 dark:bg-slate-700 px-1 rounded break-all">{window.location.href.split("?")[0].split("#")[0]}</code></li>
+            <li><b>6.</b> {he?"לחץ":"Click"} <b>Register</b> → {he?"העתק את":"Copy the"} <b>Application (client) ID</b></li>
+            <li><b>7.</b> {he?'לך ל-"Authentication" → סמן "Access tokens" ו-"ID tokens" → Save':'Go to "Authentication" → check "Access tokens" and "ID tokens" → Save'}</li>
+            <li><b>8.</b> {he?"הדבק כאן את ה-Client ID":"Paste the Client ID below"} ✅</li>
           </ol>
         </details>
 
@@ -1475,18 +1476,18 @@ function OneDriveSettingsModal({ onClose, onClientIdSave, currentClientId, lang 
           <label className="block font-semibold mb-1">Azure Application (Client) ID:</label>
           <input value={cid} onChange={e=>setCid(e.target.value)} placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
             className="w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 font-mono text-xs bg-transparent" />
-          <div className="text-[11px] opacity-60 mt-1">{he?"׳”׳ ׳×׳•׳ ׳™׳ ׳™׳©׳׳¨׳• ׳‘-OneDrive/Apps/MyDailySchedule/daily-schedule.json":"Data saved to OneDrive/Apps/MyDailySchedule/daily-schedule.json"}</div>
+          <div className="text-[11px] opacity-60 mt-1">{he?"הנתונים ישמרו ב-OneDrive/Apps/MyDailySchedule/daily-schedule.json":"Data saved to OneDrive/Apps/MyDailySchedule/daily-schedule.json"}</div>
         </div>
 
         <div className="flex gap-2">
           <button onClick={()=>{ localStorage.setItem("od_clientId", cid.trim()); onClientIdSave(cid.trim()); onClose(); }}
             className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold">
-            {he?"׳©׳׳•׳¨ ׳•׳”׳×׳—׳‘׳¨":"Save & Connect"}
+            {he?"שמור והתחבר":"Save & Connect"}
           </button>
           {currentClientId && (
             <button onClick={()=>{ localStorage.removeItem("od_clientId"); onClientIdSave(""); onClose(); }}
               className="px-4 py-2 border border-red-400 text-red-600 rounded-lg">
-              {he?"׳ ׳×׳§":"Disconnect"}
+              {he?"נתק":"Disconnect"}
             </button>
           )}
         </div>
@@ -1499,7 +1500,7 @@ function App() {
   const { isMobile, isTablet, isDesktop, isCompact, isTouch } = device;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  /* ג”€ג”€ OneDrive state ג”€ג”€ */
+  /* ── OneDrive state ── */
   const [odClientId, setOdClientId] = useState(()=>localStorage.getItem("od_clientId")||"");
   const [odStatus, setOdStatus] = useState("idle"); // idle|connecting|connected|saving|error|disconnected
   const [odAccount, setOdAccount] = useState(null);
@@ -1542,7 +1543,7 @@ function App() {
     return ()=>clearInterval(iv);
   }, []);
 
-  /* ג”€ג”€ OneDrive: init MSAL and handle redirect ג”€ג”€ */
+  /* ── OneDrive: init MSAL and handle redirect ── */
   useEffect(()=>{
     if(!odClientId) return;
     const instance = buildMsal(odClientId);
@@ -1640,12 +1641,12 @@ function App() {
   // Double-right-click selection (click twice within 400ms = toggle select)
   const lastRClickRef = useRef({id:null, time:0});
 
-  /* ג”€ג”€ Sync state (OneDrive only, no Firebase) ג”€ג”€ */
+  /* ── Sync state (OneDrive only, no Firebase) ── */
   const [syncStatus, setSyncStatus] = useState("idle"); // idle|saving|synced|error|offline
   const dataRef = useRef(data);
   useEffect(()=>{ dataRef.current = data; }, [data]);
 
-  /* ג”€ג”€ Data change effect: localStorage cache + OneDrive auto-save ג”€ג”€ */
+  /* ── Data change effect: localStorage cache + OneDrive auto-save ── */
   useEffect(()=>{
     if(undoingRef.current){ undoingRef.current=false; prevRef.current=data; saveLocalData(data); return; }
     if(redoingRef.current){ redoingRef.current=false; prevRef.current=data; saveLocalData(data); return; }
@@ -2179,9 +2180,9 @@ function App() {
         <div className="flex gap-1">
           <button onClick={()=>addItem({key:"scheduled"})} className="text-xs px-2 py-1 border rounded">{t.addTask}</button>
           <button onClick={()=>setShowDoneScheduled(s=>!s)}
-            title={showDoneScheduled?(lang==="he"?"׳”׳¡׳×׳¨ ׳©׳‘׳•׳¦׳¢׳•":"Hide done"):(lang==="he"?"׳”׳¦׳’ ׳©׳‘׳•׳¦׳¢׳•":"Show done")}
+            title={showDoneScheduled?(lang==="he"?"הסתר שבוצעו":"Hide done"):(lang==="he"?"הצג שבוצעו":"Show done")}
             className={`text-xs px-2 py-1 border rounded ${showDoneScheduled?"bg-emerald-100 dark:bg-emerald-900/30 border-emerald-400":""}`}>
-            {showDoneScheduled?"ג“ Hide":"ג“ Show"}
+            {showDoneScheduled?"✓ Hide":"✓ Show"}
           </button>
         </div>
       ),
@@ -2267,7 +2268,7 @@ function App() {
       actions: (
         <div className="flex gap-1">
           <button onClick={()=>addItem(listPath)} className="text-xs px-2 py-1 border rounded">{t.addTask}</button>
-          <button onClick={()=>deleteCustomSection(def.id)} title="Remove panel" className="text-xs px-1.5 py-1 border rounded text-red-500 hover:bg-red-50">ג•</button>
+          <button onClick={()=>deleteCustomSection(def.id)} title="Remove panel" className="text-xs px-1.5 py-1 border rounded text-red-500 hover:bg-red-50">✕</button>
         </div>
       ),
       render:(cellBg)=>(<>
@@ -2315,15 +2316,15 @@ function App() {
     id:"waitingForList", title:`${t.waitingFor} (${allWaitingTasks.length})`, actions:null,
     render:(cellBg)=>(
       allWaitingTasks.length===0
-        ? <div className="text-xs opacity-50 p-2">{lang==="he"?"׳׳™׳ ׳׳©׳™׳׳•׳× ׳׳׳×׳™׳ ׳•׳×":"No waiting tasks"}</div>
+        ? <div className="text-xs opacity-50 p-2">{lang==="he"?"אין משימות ממתינות":"No waiting tasks"}</div>
         : allWaitingTasks.map(({item,date:dt,panel,aw},i)=>(
           <div key={item.id+i} className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 py-1 px-1 text-xs" style={{direction:"ltr"}}>
-            <span className="text-orange-500 font-bold flex-shrink-0">ג³</span>
-            <span className="flex-1 truncate">{item.text||"ג€”"}</span>
+            <span className="text-orange-500 font-bold flex-shrink-0">⏳</span>
+            <span className="flex-1 truncate">{item.text||"—"}</span>
             <span className="opacity-60 flex-shrink-0">{aw.expectedDate}</span>
             <span className="opacity-40 text-[10px] flex-shrink-0">{dt}</span>
             <button onClick={()=>{ setDate(dt); setTab("daily"); }} className="text-[10px] px-1.5 py-0.5 border rounded hover:bg-black/5">
-              {lang==="he"?"׳¢׳‘׳•׳¨":"Go"}
+              {lang==="he"?"עבור":"Go"}
             </button>
           </div>
         ))
@@ -2356,7 +2357,7 @@ function App() {
       actions:(
         <div className="flex gap-1">
           <button onClick={()=>addInventoryItem(cat)} className="text-xs px-2 py-1 border rounded">{t.addInventoryItem}</button>
-          <button onClick={()=>deleteCustomCategory(def.id)} title="Remove" className="text-xs px-1.5 py-1 border rounded text-red-500 hover:bg-red-50">ג•</button>
+          <button onClick={()=>deleteCustomCategory(def.id)} title="Remove" className="text-xs px-1.5 py-1 border rounded text-red-500 hover:bg-red-50">✕</button>
         </div>
       ),
       render:(cellBg)=>(<>
@@ -2404,16 +2405,16 @@ function App() {
       render:()=> (
         <div className="p-3 flex flex-col gap-1">
           <div className="text-4xl font-bold text-emerald-500">{archiveCountToday}</div>
-          <div className="text-xs opacity-60">{lang==="he"?"׳”׳™׳•׳":"Today"} ֲ· {todayForDash}</div>
+          <div className="text-xs opacity-60">{lang==="he"?"היום":"Today"} · {todayForDash}</div>
           <div className="mt-2 text-sm">
-            <div className="flex justify-between py-0.5"><span>{lang==="he"?"׳‘׳׳׳׳™":"In pool"}</span><span className="font-semibold">{(day.pool||[]).length}</span></div>
-            <div className="flex justify-between py-0.5"><span>{lang==="he"?"׳׳×׳•׳–׳׳ ׳•׳×":"Scheduled"}</span><span className="font-semibold">{(day.scheduled||[]).length}</span></div>
-            <div className="flex justify-between py-0.5"><span>{lang==="he"?"׳׳׳×׳™׳ ׳•׳×":"Waiting"}</span><span className="font-semibold text-orange-500">{waitingItems.length}</span></div>
-            <div className="flex justify-between py-0.5 border-t mt-1 font-semibold"><span>{lang==="he"?"׳¡׳”\"׳› ׳‘׳׳¨׳›׳™׳•׳":"Total archived"}</span><span>{data.archive.length}</span></div>
+            <div className="flex justify-between py-0.5"><span>{lang==="he"?"במלאי":"In pool"}</span><span className="font-semibold">{(day.pool||[]).length}</span></div>
+            <div className="flex justify-between py-0.5"><span>{lang==="he"?"מתוזמנות":"Scheduled"}</span><span className="font-semibold">{(day.scheduled||[]).length}</span></div>
+            <div className="flex justify-between py-0.5"><span>{lang==="he"?"ממתינות":"Waiting"}</span><span className="font-semibold text-orange-500">{waitingItems.length}</span></div>
+            <div className="flex justify-between py-0.5 border-t mt-1 font-semibold"><span>{lang==="he"?"סה\"כ בארכיון":"Total archived"}</span><span>{data.archive.length}</span></div>
           </div>
         </div>
       )},
-    { id:"dash_chart", title:lang==="he"?"נ“ ׳”׳©׳׳׳•׳× - 14 ׳™׳׳™׳ ׳׳—׳¨׳•׳ ׳™׳":"נ“ Completions - last 14 days", actions:null,
+    { id:"dash_chart", title:lang==="he"?"📊 השלמות - 14 ימים אחרונים":"📊 Completions - last 14 days", actions:null,
       render:()=>(
         <div className="p-2" style={{direction:"ltr"}}>
           <svg width="100%" viewBox={`0 0 ${completedByDay.length*36} 130`} preserveAspectRatio="none">
@@ -2431,8 +2432,8 @@ function App() {
             <line x1="0" y1="100" x2={completedByDay.length*36} y2="100" stroke="currentColor" opacity="0.15" strokeWidth="1"/>
           </svg>
           <div className="flex gap-3 text-[10px] opacity-60 mt-1">
-            <span>נ¢ {lang==="he"?"׳”׳™׳•׳":"Today"}</span>
-            <span>נ£ {lang==="he"?"׳©׳׳¨ ׳”׳™׳׳™׳":"Other days"}</span>
+            <span>🟢 {lang==="he"?"היום":"Today"}</span>
+            <span>🟣 {lang==="he"?"שאר הימים":"Other days"}</span>
           </div>
         </div>
       )},
@@ -2443,7 +2444,7 @@ function App() {
         const colors = ["#6366f1","#22c55e","#f59e0b","#ef4444","#06b6d4","#ec4899","#8b5cf6","#f97316"];
         return (
           <div className="p-2" style={{direction:"ltr"}}>
-            {cats.length===0 && <div className="text-xs opacity-50 p-2">{lang==="he"?"׳׳™׳ ׳ ׳×׳•׳ ׳™׳ ׳¢׳“׳™׳™׳":"No data yet"}</div>}
+            {cats.length===0 && <div className="text-xs opacity-50 p-2">{lang==="he"?"אין נתונים עדיין":"No data yet"}</div>}
             {cats.map((cat,i)=>{
               const count = data.archive.filter(a=>a.category===cat).length;
               const pct = Math.round(count/total*100);
@@ -2471,9 +2472,9 @@ function App() {
         data.archive.forEach(a=>{ const wk=a.date?.slice(0,7)||"?"; weeks[wk]=(weeks[wk]||0)+1; });
         return (
           <div className="p-2 text-sm flex flex-col gap-1.5" style={{direction:"ltr"}}>
-            <div className="flex justify-between py-0.5 border-b"><span>{lang==="he"?"׳¡׳”\"׳› ׳‘׳׳¨׳›׳™׳•׳":"Total archived"}</span><span className="font-bold text-indigo-500">{data.archive.length}</span></div>
-            {avgTime!=null && <div className="flex justify-between py-0.5"><span>{lang==="he"?"׳–׳׳ ׳‘׳™׳¦׳•׳¢ ׳׳׳•׳¦׳¢":"Avg. execution time"}</span><span className="font-semibold">{avgTime} {lang==="he"?"׳“׳§׳³":"min"}</span></div>}
-            <div className="text-xs opacity-60 mt-1 font-semibold">{lang==="he"?"׳׳₪׳™ ׳—׳•׳“׳©":"By month:"}</div>
+            <div className="flex justify-between py-0.5 border-b"><span>{lang==="he"?"סה\"כ בארכיון":"Total archived"}</span><span className="font-bold text-indigo-500">{data.archive.length}</span></div>
+            {avgTime!=null && <div className="flex justify-between py-0.5"><span>{lang==="he"?"זמן ביצוע ממוצע":"Avg. execution time"}</span><span className="font-semibold">{avgTime} {lang==="he"?"דק׳":"min"}</span></div>}
+            <div className="text-xs opacity-60 mt-1 font-semibold">{lang==="he"?"לפי חודש":"By month:"}</div>
             {Object.entries(weeks).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,6).map(([mo,cnt])=>(
               <div key={mo} className="flex justify-between text-xs">
                 <span>{mo}</span><span className="font-semibold">{cnt}</span>
@@ -2482,18 +2483,18 @@ function App() {
           </div>
         );
       }},
-    { id:"dash_waiting", title:`ג³ ${lang==="he"?"׳׳׳×׳™׳ ׳•׳× ׳׳×׳©׳•׳‘׳”":"Waiting for reply"} (${waitingItems.length})`, actions:null,
+    { id:"dash_waiting", title:`⏳ ${lang==="he"?"ממתינות לתשובה":"Waiting for reply"} (${waitingItems.length})`, actions:null,
       render:()=>(
         <div className="p-1 text-xs" style={{direction:"ltr"}}>
-          {waitingItems.length===0 && <div className="opacity-50 p-2">{lang==="he"?"׳׳™׳ ׳׳©׳™׳׳•׳× ׳׳׳×׳™׳ ׳•׳×":"No waiting tasks"}</div>}
+          {waitingItems.length===0 && <div className="opacity-50 p-2">{lang==="he"?"אין משימות ממתינות":"No waiting tasks"}</div>}
           {waitingItems.map(({item,dt,key,aw},i)=>{
             const overdue = aw.expectedDate<todayForDash;
             return (
               <div key={item.id+i} className={`flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 py-1 ${overdue?"bg-red-50 dark:bg-red-900/20":""}`}>
-                <span className={`font-bold flex-shrink-0 ${overdue?"text-red-500":"text-orange-500"}`}>{overdue?"נ”´":"ג³"}</span>
-                <span className="flex-1 truncate">{item.text||"ג€”"}</span>
+                <span className={`font-bold flex-shrink-0 ${overdue?"text-red-500":"text-orange-500"}`}>{overdue?"🔴":"⏳"}</span>
+                <span className="flex-1 truncate">{item.text||"—"}</span>
                 <span className="opacity-70 flex-shrink-0">{aw.expectedDate}</span>
-                <button onClick={()=>{ setDate(dt); setTab("daily"); }} className="px-1.5 py-0.5 border rounded hover:bg-black/5 flex-shrink-0">{lang==="he"?"׳¢׳‘׳•׳¨":"Go"}</button>
+                <button onClick={()=>{ setDate(dt); setTab("daily"); }} className="px-1.5 py-0.5 border rounded hover:bg-black/5 flex-shrink-0">{lang==="he"?"עבור":"Go"}</button>
               </div>
             );
           })}
@@ -2503,11 +2504,11 @@ function App() {
 
   const TAB_PANELS = { daily: dailyPanels, inventory: inventoryPanels, archive: archivePanels, dashboard: dashboardPanels };
 
-  /* ג”€ג”€ Sync status display ג”€ג”€ */
-  const syncIcon = odStatus==="saving" || syncStatus==="saving" ? "ג†»"
-    : odStatus==="error" || syncStatus==="error" ? "ג "
-    : odStatus==="connected" ? "ג˜"
-    : "נ’¾"; // local only
+  /* ── Sync status display ── */
+  const syncIcon = odStatus==="saving" || syncStatus==="saving" ? "↻"
+    : odStatus==="error" || syncStatus==="error" ? "⚠"
+    : odStatus==="connected" ? "☁"
+    : "💾"; // local only
   const syncClass = (odStatus==="saving"||syncStatus==="saving") ? "bg-amber-100 dark:bg-amber-900/40 border-amber-400 animate-pulse"
     : (odStatus==="error"||syncStatus==="error") ? "bg-red-100 dark:bg-red-900/40 border-red-400 cursor-pointer"
     : odStatus==="connected" ? "bg-emerald-100 dark:bg-emerald-900/40 border-emerald-400"
@@ -2517,23 +2518,23 @@ function App() {
     else if(!odClientId) setShowOdSettings(true);
   };
 
-  const odIcon = !odClientId ? "נ”—" : odStatus==="connected" ? "נ¢" : odStatus==="connecting" ? "נ”„" : odStatus==="error" ? "נ”´" : "ג×";
-  const odTitle = !odClientId ? (lang==="he"?"׳”׳’׳“׳¨ OneDrive":"Setup OneDrive sync") : odStatus==="connected" ? `OneDrive: ${odAccount?.name||odAccount?.username||"connected"}` : odStatus==="connecting" ? (lang==="he"?"׳׳×׳—׳‘׳¨ ׳-OneDrive...":"Connecting to OneDrive...") : (lang==="he"?"׳©׳’׳™׳׳× OneDrive":"OneDrive error");
+  const odIcon = !odClientId ? "🔗" : odStatus==="connected" ? "🟢" : odStatus==="connecting" ? "🔄" : odStatus==="error" ? "🔴" : "⚪";
+  const odTitle = !odClientId ? (lang==="he"?"הגדר OneDrive":"Setup OneDrive sync") : odStatus==="connected" ? `OneDrive: ${odAccount?.name||odAccount?.username||"connected"}` : odStatus==="connecting" ? (lang==="he"?"מתחבר ל-OneDrive...":"Connecting to OneDrive...") : (lang==="he"?"שגיאת OneDrive":"OneDrive error");
   const odLabel = !odClientId ? "OneDrive" : odStatus==="connected" ? ((odAccount?.name||"").split(" ")[0]||"Connected") : odStatus==="connecting" ? "..." : "Error";
 
-  const TAB_ICONS = {daily:"נ“…", inventory:"נ—ƒ", archive:"נ“¦", dashboard:"נ“"};
+  const TAB_ICONS = {daily:"📅", inventory:"🗃", archive:"📦", dashboard:"📊"};
 
   return (
     <div dir={dir} className={dark?"dark":""}>
       <div className={`min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 dark:text-slate-100 text-slate-800 transition-colors ${isMobile?"pb-20":""}`}>
 
-        {/* ג”€ג”€ DESKTOP/TABLET HEADER ג”€ג”€ */}
+        {/* ── DESKTOP/TABLET HEADER ── */}
         {!isMobile && (
           <div className="sticky top-0 z-10 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-300 dark:border-slate-700 px-3 py-2 flex flex-wrap items-center gap-2 justify-between">
             <h1 className="text-lg font-bold">{t.appTitle}</h1>
             <div className="flex items-center gap-2 flex-wrap">
               <div className="relative">
-                <button onClick={()=>setShowSearch(s=>!s)} title={t.search} className={`p-2 border rounded text-base ${showSearch?"bg-indigo-100 dark:bg-indigo-900/40 border-indigo-400":""}`}>נ”</button>
+                <button onClick={()=>setShowSearch(s=>!s)} title={t.search} className={`p-2 border rounded text-base ${showSearch?"bg-indigo-100 dark:bg-indigo-900/40 border-indigo-400":""}`}>🔍</button>
                 {showSearch && (
                   <div className="absolute z-[999] mt-1 w-72" style={{[lang==="he"?"right":"left"]:0}}>
                     <input autoFocus value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder={t.searchPlaceholder}
@@ -2543,7 +2544,7 @@ function App() {
                         {searchResults.length===0 && <div className="p-2 opacity-60 text-xs">{t.noResults}</div>}
                         {searchResults.map((r,i)=>(
                           <button key={i} onClick={()=>goToResult(r)} className="w-full text-left px-2 py-1.5 border-b border-slate-100 dark:border-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 flex flex-col">
-                            <span className="truncate">{r.text||"ג€”"}</span><span className="text-[11px] opacity-60">{r.location}</span>
+                            <span className="truncate">{r.text||"—"}</span><span className="text-[11px] opacity-60">{r.location}</span>
                           </button>
                         ))}
                       </div>
@@ -2552,22 +2553,22 @@ function App() {
                 )}
               </div>
               <input type="date" value={date} onChange={(e)=>setDate(e.target.value)} className="bg-transparent border border-slate-300 dark:border-slate-600 rounded px-2 py-1 text-sm" />
-              <button onClick={()=>setDate(addDays(date,-1))} className="px-2.5 py-1.5 border rounded text-sm">ג€¹</button>
+              <button onClick={()=>setDate(addDays(date,-1))} className="px-2.5 py-1.5 border rounded text-sm">‹</button>
               <button onClick={()=>setDate(todayStr())} className="px-2.5 py-1.5 border rounded text-sm">{t.today}</button>
-              <button onClick={()=>setDate(addDays(date,1))} className="px-2.5 py-1.5 border rounded text-sm">ג€÷</button>
+              <button onClick={()=>setDate(addDays(date,1))} className="px-2.5 py-1.5 border rounded text-sm">›</button>
               <select value={lang} onChange={(e)=>setSettings({lang:e.target.value})} className="bg-transparent border border-slate-300 dark:border-slate-600 rounded px-2 py-1 text-sm">
-                <option value="en">EN</option><option value="he">׳¢׳‘׳¨׳™׳×</option><option value="ar">״§„״¹״±״¨״©</option>
+                <option value="en">EN</option><option value="he">עברית</option><option value="ar">العربية</option>
               </select>
-              <button onClick={()=>setSettings({dark:!dark})} className="p-2 border rounded text-base">{dark?"ג˜€":"נ™"}</button>
+              <button onClick={()=>setSettings({dark:!dark})} className="p-2 border rounded text-base">{dark?"☀":"🌙"}</button>
               <div className="relative flex">
-                <button onClick={undo} disabled={history.length===0} className={`px-2 py-1.5 border-l border-y rounded-l text-base ${history.length===0?"opacity-30":""}`}>ג†¶</button>
-                <button onClick={()=>{ setShowRedoMenu(false); setShowUndoMenu(o=>!o); }} disabled={history.length===0} className={`px-1 py-1.5 border rounded-r text-[10px] border-l-0 ${history.length===0?"opacity-30":""}`}>ג–¾</button>
-                {showUndoMenu && createPortal(<div className="fixed inset-0 z-[998]" onClick={()=>setShowUndoMenu(false)}><div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl text-xs overflow-hidden" style={{top:50,left:8,minWidth:220,maxHeight:280,overflowY:"auto"}}><div className="px-3 py-1.5 font-semibold border-b opacity-60">{lang==="he"?"׳₪׳¢׳•׳׳•׳× ׳׳‘׳™׳˜׳•׳":"Actions to undo"}</div>{[...history].reverse().slice(0,15).map((snap,i)=>{ const after=i===0?dataRef.current:[...history].reverse()[i-1]; return(<button key={i} onClick={()=>{ for(let x=0;x<=i;x++) undo(); setShowUndoMenu(false); }} className="block w-full text-left px-3 py-1.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border-b border-slate-100 dark:border-slate-700">{diffLabel(snap,after)}</button>); })}</div></div>,document.body)}
+                <button onClick={undo} disabled={history.length===0} className={`px-2 py-1.5 border-l border-y rounded-l text-base ${history.length===0?"opacity-30":""}`}>↶</button>
+                <button onClick={()=>{ setShowRedoMenu(false); setShowUndoMenu(o=>!o); }} disabled={history.length===0} className={`px-1 py-1.5 border rounded-r text-[10px] border-l-0 ${history.length===0?"opacity-30":""}`}>▾</button>
+                {showUndoMenu && createPortal(<div className="fixed inset-0 z-[998]" onClick={()=>setShowUndoMenu(false)}><div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl text-xs overflow-hidden" style={{top:50,left:8,minWidth:220,maxHeight:280,overflowY:"auto"}}><div className="px-3 py-1.5 font-semibold border-b opacity-60">{lang==="he"?"פעולות לביטול":"Actions to undo"}</div>{[...history].reverse().slice(0,15).map((snap,i)=>{ const after=i===0?dataRef.current:[...history].reverse()[i-1]; return(<button key={i} onClick={()=>{ for(let x=0;x<=i;x++) undo(); setShowUndoMenu(false); }} className="block w-full text-left px-3 py-1.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border-b border-slate-100 dark:border-slate-700">{diffLabel(snap,after)}</button>); })}</div></div>,document.body)}
               </div>
               <div className="relative flex">
-                <button onClick={redo} disabled={redoStack.length===0} className={`px-2 py-1.5 border-l border-y rounded-l text-base ${redoStack.length===0?"opacity-30":""}`}>ג†·</button>
-                <button onClick={()=>{ setShowUndoMenu(false); setShowRedoMenu(o=>!o); }} disabled={redoStack.length===0} className={`px-1 py-1.5 border rounded-r text-[10px] border-l-0 ${redoStack.length===0?"opacity-30":""}`}>ג–¾</button>
-                {showRedoMenu && createPortal(<div className="fixed inset-0 z-[998]" onClick={()=>setShowRedoMenu(false)}><div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl text-xs overflow-hidden" style={{top:50,left:80,minWidth:220,maxHeight:280,overflowY:"auto"}}><div className="px-3 py-1.5 font-semibold border-b opacity-60">{lang==="he"?"׳₪׳¢׳•׳׳•׳× ׳׳—׳–׳¨׳”":"Actions to redo"}</div>{[...redoStack].reverse().slice(0,15).map((snap,i)=>{ const before=i===0?dataRef.current:[...redoStack].reverse()[i-1]; return(<button key={i} onClick={()=>{ for(let x=0;x<=i;x++) redo(); setShowRedoMenu(false); }} className="block w-full text-left px-3 py-1.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border-b border-slate-100 dark:border-slate-700">{diffLabel(before,snap)}</button>); })}</div></div>,document.body)}
+                <button onClick={redo} disabled={redoStack.length===0} className={`px-2 py-1.5 border-l border-y rounded-l text-base ${redoStack.length===0?"opacity-30":""}`}>↷</button>
+                <button onClick={()=>{ setShowUndoMenu(false); setShowRedoMenu(o=>!o); }} disabled={redoStack.length===0} className={`px-1 py-1.5 border rounded-r text-[10px] border-l-0 ${redoStack.length===0?"opacity-30":""}`}>▾</button>
+                {showRedoMenu && createPortal(<div className="fixed inset-0 z-[998]" onClick={()=>setShowRedoMenu(false)}><div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl text-xs overflow-hidden" style={{top:50,left:80,minWidth:220,maxHeight:280,overflowY:"auto"}}><div className="px-3 py-1.5 font-semibold border-b opacity-60">{lang==="he"?"פעולות לחזרה":"Actions to redo"}</div>{[...redoStack].reverse().slice(0,15).map((snap,i)=>{ const before=i===0?dataRef.current:[...redoStack].reverse()[i-1]; return(<button key={i} onClick={()=>{ for(let x=0;x<=i;x++) redo(); setShowRedoMenu(false); }} className="block w-full text-left px-3 py-1.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border-b border-slate-100 dark:border-slate-700">{diffLabel(before,snap)}</button>); })}</div></div>,document.body)}
               </div>
               {/* Unified sync status indicator */}
               <span onClick={onSyncClick} title={odTitle} className={`flex items-center justify-center w-8 h-8 rounded-full border text-base cursor-pointer ${syncClass}`}>{syncIcon}</span>
@@ -2579,25 +2580,25 @@ function App() {
                 </button>
                 {odClientId && odStatus!=="connected" && (
                   <button onClick={odConnectLogin} className="text-xs px-2 py-1.5 border rounded bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
-                    {lang==="he"?"׳”׳×׳—׳‘׳¨":"Sign in"}
+                    {lang==="he"?"התחבר":"Sign in"}
                   </button>
                 )}
                 {odClientId && odStatus==="connected" && (
                   <button onClick={odDisconnect} className="text-xs px-2 py-1.5 border rounded opacity-60 hover:opacity-100">
-                    {lang==="he"?"׳ ׳×׳§":"Sign out"}
+                    {lang==="he"?"נתק":"Sign out"}
                   </button>
                 )}
               </div>
               {/* Export / Import JSON */}
               <div className="flex items-center gap-1 border-l pl-2 ml-1">
-                <button onClick={()=>exportJsonFile(data)} title="Export data to JSON file" className="text-xs px-2 py-1.5 border rounded hover:bg-slate-50 dark:hover:bg-slate-800">ג¬‡ JSON</button>
-                <button onClick={()=>importJsonFile(parsed=>{ const nd=normalizeData(parsed); setData(nd); })} title="Import data from JSON file" className="text-xs px-2 py-1.5 border rounded hover:bg-slate-50 dark:hover:bg-slate-800">ג¬† JSON</button>
+                <button onClick={()=>exportJsonFile(data)} title="Export data to JSON file" className="text-xs px-2 py-1.5 border rounded hover:bg-slate-50 dark:hover:bg-slate-800">⬇ JSON</button>
+                <button onClick={()=>importJsonFile(parsed=>{ const nd=normalizeData(parsed); setData(nd); })} title="Import data from JSON file" className="text-xs px-2 py-1.5 border rounded hover:bg-slate-50 dark:hover:bg-slate-800">⬆ JSON</button>
               </div>
             </div>
           </div>
         )}
 
-        {/* ג”€ג”€ OneDrive Settings Modal ג”€ג”€ */}
+        {/* ── OneDrive Settings Modal ── */}
         {showOdSettings && (
           <OneDriveSettingsModal lang={lang}
             currentClientId={odClientId}
@@ -2609,18 +2610,18 @@ function App() {
             }} />
         )}
 
-        {/* ג”€ג”€ MOBILE HEADER ג”€ג”€ */}
+        {/* ── MOBILE HEADER ── */}
         {isMobile && (
           <div className="sticky top-0 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-700 px-3 py-2">
             <div className="flex items-center justify-between gap-2">
               <span className="font-bold text-base truncate">{t.appTitle}</span>
               <div className="flex items-center gap-1.5">
-                <button onClick={()=>setDate(addDays(date,-1))} className="w-9 h-9 flex items-center justify-center border rounded-lg text-lg">ג€¹</button>
-                <button onClick={()=>setDate(todayStr())} className="px-2 h-9 border rounded-lg text-xs font-semibold">{date===todayStr()?"ג¬₪":date.slice(5)}</button>
-                <button onClick={()=>setDate(addDays(date,1))} className="w-9 h-9 flex items-center justify-center border rounded-lg text-lg">ג€÷</button>
-                <button onClick={()=>setShowSearch(s=>!s)} className={`w-9 h-9 flex items-center justify-center border rounded-lg text-lg ${showSearch?"bg-indigo-100 border-indigo-400":""}`}>נ”</button>
+                <button onClick={()=>setDate(addDays(date,-1))} className="w-9 h-9 flex items-center justify-center border rounded-lg text-lg">‹</button>
+                <button onClick={()=>setDate(todayStr())} className="px-2 h-9 border rounded-lg text-xs font-semibold">{date===todayStr()?"⬤":date.slice(5)}</button>
+                <button onClick={()=>setDate(addDays(date,1))} className="w-9 h-9 flex items-center justify-center border rounded-lg text-lg">›</button>
+                <button onClick={()=>setShowSearch(s=>!s)} className={`w-9 h-9 flex items-center justify-center border rounded-lg text-lg ${showSearch?"bg-indigo-100 border-indigo-400":""}`}>🔍</button>
                 <span onClick={onSyncClick} className={`w-9 h-9 flex items-center justify-center rounded-full border text-base ${syncClass}`}>{syncIcon}</span>
-                <button onClick={()=>setMobileMenuOpen(o=>!o)} className="w-9 h-9 flex items-center justify-center border rounded-lg text-base">ג˜°</button>
+                <button onClick={()=>setMobileMenuOpen(o=>!o)} className="w-9 h-9 flex items-center justify-center border rounded-lg text-base">☰</button>
               </div>
             </div>
             {showSearch && (
@@ -2632,7 +2633,7 @@ function App() {
                     {searchResults.length===0 && <div className="p-3 opacity-60 text-xs">{t.noResults}</div>}
                     {searchResults.map((r,i)=>(
                       <button key={i} onClick={()=>goToResult(r)} className="w-full text-left px-3 py-2 border-b border-slate-100 dark:border-slate-700 hover:bg-indigo-50 flex flex-col">
-                        <span className="truncate">{r.text||"ג€”"}</span><span className="text-[11px] opacity-60">{r.location}</span>
+                        <span className="truncate">{r.text||"—"}</span><span className="text-[11px] opacity-60">{r.location}</span>
                       </button>
                     ))}
                   </div>
@@ -2642,56 +2643,56 @@ function App() {
           </div>
         )}
 
-        {/* ג”€ג”€ MOBILE HAMBURGER MENU ג”€ג”€ */}
+        {/* ── MOBILE HAMBURGER MENU ── */}
         {isMobile && mobileMenuOpen && createPortal(
           <div className="fixed inset-0 z-[999]" onClick={()=>setMobileMenuOpen(false)}>
             <div onClick={e=>e.stopPropagation()} className="absolute top-0 right-0 w-72 h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 shadow-2xl flex flex-col p-4 gap-4">
               <div className="flex justify-between items-center">
                 <span className="font-bold">{t.appTitle}</span>
-                <button onClick={()=>setMobileMenuOpen(false)} className="p-2 text-xl">ג•</button>
+                <button onClick={()=>setMobileMenuOpen(false)} className="p-2 text-xl">✕</button>
               </div>
               <div className="flex flex-col gap-2 text-sm">
                 <div className="flex items-center gap-2">
-                  <span className="opacity-60 w-16">נ“… {lang==="he"?"׳×׳׳¨׳™׳":"Date"}:</span>
+                  <span className="opacity-60 w-16">📅 {lang==="he"?"תאריך":"Date"}:</span>
                   <input type="date" value={date} onChange={(e)=>{ setDate(e.target.value); setMobileMenuOpen(false); }} className="flex-1 border rounded px-2 py-1 bg-transparent text-sm" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="opacity-60 w-16">נ {lang==="he"?"׳©׳₪׳”":"Lang"}:</span>
+                  <span className="opacity-60 w-16">🌐 {lang==="he"?"שפה":"Lang"}:</span>
                   <select value={lang} onChange={(e)=>setSettings({lang:e.target.value})} className="flex-1 border rounded px-2 py-1 bg-transparent text-sm">
-                    <option value="en">EN</option><option value="he">׳¢׳‘׳¨׳™׳×</option><option value="ar">״§„״¹״±״¨״©</option>
+                    <option value="en">EN</option><option value="he">עברית</option><option value="ar">العربية</option>
                   </select>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="opacity-60">נ™ {lang==="he"?"׳׳¦׳‘ ׳›׳”׳”":"Dark mode"}</span>
-                  <button onClick={()=>setSettings({dark:!dark})} className="p-2 border rounded">{dark?"ג˜€":"נ™"}</button>
+                  <span className="opacity-60">🌙 {lang==="he"?"מצב כהה":"Dark mode"}</span>
+                  <button onClick={()=>setSettings({dark:!dark})} className="p-2 border rounded">{dark?"☀":"🌙"}</button>
                 </div>
                 <div className="flex items-center gap-2 pt-2 border-t">
-                  <button onClick={()=>{ undo(); }} disabled={history.length===0} className={`flex-1 py-2 border rounded ${history.length===0?"opacity-30":""}`}>ג†¶ {lang==="he"?"׳‘׳˜׳":"Undo"}</button>
-                  <button onClick={()=>{ redo(); }} disabled={redoStack.length===0} className={`flex-1 py-2 border rounded ${redoStack.length===0?"opacity-30":""}`}>ג†· {lang==="he"?"׳—׳–׳•׳¨":"Redo"}</button>
+                  <button onClick={()=>{ undo(); }} disabled={history.length===0} className={`flex-1 py-2 border rounded ${history.length===0?"opacity-30":""}`}>↶ {lang==="he"?"בטל":"Undo"}</button>
+                  <button onClick={()=>{ redo(); }} disabled={redoStack.length===0} className={`flex-1 py-2 border rounded ${redoStack.length===0?"opacity-30":""}`}>↷ {lang==="he"?"חזור":"Redo"}</button>
                 </div>
                 {/* OneDrive in mobile menu */}
                 <div className="flex flex-col gap-2 pt-2 border-t text-xs">
-                  <div className="font-semibold opacity-80">נ”— OneDrive Sync {odIcon}</div>
-                  {!odClientId && <button onClick={()=>{ setMobileMenuOpen(false); setShowOdSettings(true); }} className="py-2 border rounded text-indigo-600">{lang==="he"?"׳”׳’׳“׳¨ OneDrive":"Setup OneDrive"}</button>}
-                  {odClientId && odStatus!=="connected" && <button onClick={()=>{ setMobileMenuOpen(false); odConnectLogin(); }} className="py-2 border rounded bg-blue-50 text-blue-700">{lang==="he"?"׳”׳×׳—׳‘׳¨ ׳-OneDrive":"Connect to OneDrive"}</button>}
-                  {odClientId && odStatus==="connected" && <div className="opacity-60 truncate">ג… {odAccount?.name||odAccount?.username||"connected"}</div>}
+                  <div className="font-semibold opacity-80">🔗 OneDrive Sync {odIcon}</div>
+                  {!odClientId && <button onClick={()=>{ setMobileMenuOpen(false); setShowOdSettings(true); }} className="py-2 border rounded text-indigo-600">{lang==="he"?"הגדר OneDrive":"Setup OneDrive"}</button>}
+                  {odClientId && odStatus!=="connected" && <button onClick={()=>{ setMobileMenuOpen(false); odConnectLogin(); }} className="py-2 border rounded bg-blue-50 text-blue-700">{lang==="he"?"התחבר ל-OneDrive":"Connect to OneDrive"}</button>}
+                  {odClientId && odStatus==="connected" && <div className="opacity-60 truncate">✅ {odAccount?.name||odAccount?.username||"connected"}</div>}
                 </div>
                 {/* Export / Import */}
                 <div className="flex gap-2 pt-2 border-t">
-                  <button onClick={()=>{ exportJsonFile(data); setMobileMenuOpen(false); }} className="flex-1 py-2 border rounded text-xs">ג¬‡ {lang==="he"?"׳™׳™׳¦׳ JSON":"Export JSON"}</button>
-                  <button onClick={()=>{ importJsonFile(parsed=>{ const nd=normalizeData(parsed); setData(nd); }); setMobileMenuOpen(false); }} className="flex-1 py-2 border rounded text-xs">ג¬† {lang==="he"?"׳™׳™׳‘׳ JSON":"Import JSON"}</button>
+                  <button onClick={()=>{ exportJsonFile(data); setMobileMenuOpen(false); }} className="flex-1 py-2 border rounded text-xs">⬇ {lang==="he"?"ייצא JSON":"Export JSON"}</button>
+                  <button onClick={()=>{ importJsonFile(parsed=>{ const nd=normalizeData(parsed); setData(nd); }); setMobileMenuOpen(false); }} className="flex-1 py-2 border rounded text-xs">⬆ {lang==="he"?"ייבא JSON":"Import JSON"}</button>
                 </div>
                 {user && (
                   <div className="flex flex-col gap-2 pt-2 border-t text-xs">
-                    <div className="opacity-60 truncate">ג˜ {user.email}</div>
-                    <button onClick={()=>{ odDisconnect(); setMobileMenuOpen(false); }} className="py-2 border rounded text-red-600 dark:text-red-400">{lang==="he"?"׳ ׳×׳§ OneDrive":"Disconnect OneDrive"}</button>
+                    <div className="opacity-60 truncate">☁ {user.email}</div>
+                    <button onClick={()=>{ odDisconnect(); setMobileMenuOpen(false); }} className="py-2 border rounded text-red-600 dark:text-red-400">{lang==="he"?"נתק OneDrive":"Disconnect OneDrive"}</button>
                   </div>
                 )}
               </div>
             </div>
           </div>, document.body)}
 
-        {/* ג”€ג”€ TABS (desktop/tablet top, mobile = bottom nav) ג”€ג”€ */}
+        {/* ── TABS (desktop/tablet top, mobile = bottom nav) ── */}
         {!isMobile && (
           <div className="flex items-center gap-1 px-3 pt-2 flex-wrap">
             {["daily","inventory","archive","dashboard"].map(key=>(
@@ -2702,13 +2703,13 @@ function App() {
               <div className="relative ml-2">
                 <button onClick={()=>setShowFocusMenu(o=>!o)}
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium border ${focusPanels.size>0?"bg-indigo-600 text-white border-indigo-600":"border-indigo-300 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30"}`}>
-                  נ¯ {lang==="he"?"׳׳™׳§׳•׳“":"Focus On"}{focusPanels.size>0?` (${focusPanels.size})`:""}
+                  🎯 {lang==="he"?"מיקוד":"Focus On"}{focusPanels.size>0?` (${focusPanels.size})`:""}
                 </button>
                 {showFocusMenu && createPortal(
                   <div className="fixed inset-0 z-[998]" onClick={()=>setShowFocusMenu(false)}>
                     <div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-xl shadow-2xl p-3 text-sm"
                       style={{top:52, left:8, minWidth:240}}>
-                      <div className="font-semibold mb-2 opacity-70">{lang==="he"?"׳‘׳—׳¨ ׳—׳׳•׳ ׳™׳•׳× ׳׳”׳¦׳’׳” ׳‘׳׳¢׳“׳™׳×:":"Select panels to focus on:"}</div>
+                      <div className="font-semibold mb-2 opacity-70">{lang==="he"?"בחר חלוניות להצגה בלעדית:":"Select panels to focus on:"}</div>
                       {(tab==="daily"?dailyPanels:inventoryPanels).map(p=>(
                         <label key={p.id} className="flex items-center gap-2 py-1.5 px-2 rounded hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer">
                           <input type="checkbox" checked={focusPanels.has(p.id)}
@@ -2717,8 +2718,8 @@ function App() {
                         </label>
                       ))}
                       <div className="flex gap-2 mt-2 pt-2 border-t">
-                        <button onClick={()=>{ setFocusPanels(new Set()); setShowFocusMenu(false); }} className="flex-1 py-1 border rounded text-xs">{lang==="he"?"׳”׳¦׳’ ׳”׳›׳":"Show all"}</button>
-                        <button onClick={()=>setShowFocusMenu(false)} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs">{lang==="he"?"׳׳™׳©׳•׳¨":"Apply"}</button>
+                        <button onClick={()=>{ setFocusPanels(new Set()); setShowFocusMenu(false); }} className="flex-1 py-1 border rounded text-xs">{lang==="he"?"הצג הכל":"Show all"}</button>
+                        <button onClick={()=>setShowFocusMenu(false)} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs">{lang==="he"?"אישור":"Apply"}</button>
                       </div>
                     </div>
                   </div>, document.body)}
@@ -2727,16 +2728,16 @@ function App() {
             {(tab==="daily"||tab==="inventory") && (
               <AddPanelButton tab={tab} onAdd={(name)=>{ tab==="daily"?addCustomSection(name):addCustomCategory(name); }} t={t} />
             )}
-            <button onClick={()=>{ setData(d=>{ const order=d.layout.order[tab]||[]; const sizes={...d.layout.sizes}; const computed=computeDefaultPositions(order,sizes); const positions={...d.layout.positions}; order.forEach(id=>{ positions[id]=computed[id]; }); return {...d,layout:{...d.layout,positions}}; }); }} title={lang==="he"?"׳׳₪׳¡ ׳׳™׳§׳•׳ ׳—׳׳•׳ ׳™׳•׳×":"Reset panel layout"} className="text-[10px] px-2 py-1 border rounded opacity-50 hover:opacity-100 ml-1">ג {lang==="he"?"׳׳₪׳¡":"Reset"}</button>
+            <button onClick={()=>{ setData(d=>{ const order=d.layout.order[tab]||[]; const sizes={...d.layout.sizes}; const computed=computeDefaultPositions(order,sizes); const positions={...d.layout.positions}; order.forEach(id=>{ positions[id]=computed[id]; }); return {...d,layout:{...d.layout,positions}}; }); }} title={lang==="he"?"אפס מיקום חלוניות":"Reset panel layout"} className="text-[10px] px-2 py-1 border rounded opacity-50 hover:opacity-100 ml-1">⊞ {lang==="he"?"אפס":"Reset"}</button>
           </div>
         )}
 
-        {/* ג”€ג”€ MAIN CONTENT ג”€ג”€ */}
+        {/* ── MAIN CONTENT ── */}
         <div className={isMobile?"px-2 py-2":"p-3"}>
           <PanelGrid tab={tab} panels={TAB_PANELS[tab]} layout={layout} onResize={onResize} onColor={onColor} onMovePanel={onMovePanel} onZShift={onZShift} onMarqueeSelect={onMarqueeSelect} onSelectAll={onSelectAll} focusPanels={focusPanels.size>0?focusPanels:null} device={device} t={t} />
         </div>
 
-        {/* ג”€ג”€ MOBILE BOTTOM NAV ג”€ג”€ */}
+        {/* ── MOBILE BOTTOM NAV ── */}
         {isMobile && (
           <nav className="fixed bottom-0 left-0 right-0 z-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex safe-bottom">
             {["daily","inventory","archive","dashboard"].map(key=>(
