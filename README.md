@@ -1,2 +1,1 @@
-# haitham-apps
-My Daily Schedule App
+# Haitham Apps
