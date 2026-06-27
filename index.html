@@ -381,7 +381,7 @@ function importJsonFile(onData){
 /* ================================================================ */
 
 /* Build/version marker - updated each time a new file is generated, shown in the UI footer */
-const APP_BUILD = "v3.2.2 — 2026-06-27 15:00";
+const APP_BUILD = "v3.2.3 — 2026-06-27 15:00";
 
 const STORAGE_KEY = "daily-task-manager-data";
 /* ---------------- merge two data snapshots (for multi-device sync) ---------------- */
@@ -1421,14 +1421,14 @@ function PanelBoxTablet({ id, title, actions, render, layout, onColor, onMarquee
 }
 
 /* ---------------- App ---------------- */
-function WaitingRow({ item, dt, panel, aw, lang, t, onGoTo, onMoveToDate, onMoveToInventory, onResolve }) {
+function WaitingRow({ item, dt, panel, aw, lang, t, onGoTo, onMoveToPool, onMoveToInventoryWaiting, onArchive }) {
   const [ctx, setCtx] = useState(null);
   const [showCal, setShowCal] = useState(false);
   const today = todayStr();
   const overdue = aw.expectedDate < today;
 
   return (
-    <div onContextMenu={e=>{ e.preventDefault(); setCtx({top:Math.min(e.clientY,window.innerHeight-220),left:Math.min(e.clientX,window.innerWidth-220)}); setShowCal(false); }}
+    <div onContextMenu={e=>{ e.preventDefault(); setCtx({top:Math.min(e.clientY,window.innerHeight-260),left:Math.min(e.clientX,window.innerWidth-230)}); setShowCal(false); }}
       className={`flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 py-1 px-1 text-xs cursor-context-menu ${overdue?"bg-red-50 dark:bg-red-900/20":""}`}
       style={{direction:"ltr"}}>
       <span className={`font-bold flex-shrink-0 ${overdue?"text-red-500":"text-orange-500"}`}>{overdue?"🔴":"⏳"}</span>
@@ -1442,30 +1442,27 @@ function WaitingRow({ item, dt, panel, aw, lang, t, onGoTo, onMoveToDate, onMove
         <div className="fixed inset-0 z-[999]" onClick={()=>{ setCtx(null); setShowCal(false); }}>
           <div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-2 text-xs w-56"
             style={{top:ctx.top, left:ctx.left}}>
-            <div className="font-semibold px-2 py-1 opacity-60 truncate mb-1">{item.text||"—"}</div>
+            <div className="font-semibold px-2 py-1 opacity-60 truncate mb-1 border-b">{item.text||"—"}</div>
             {!showCal ? <>
-              <button onClick={()=>{ onMoveToDate(addDays(today,1)); setCtx(null); }}
+              <button onClick={()=>{ onMoveToPool(addDays(today,1)); setCtx(null); }}
                 className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
-                {lang==="he"?"העבר למחר":"Move to tomorrow"}
+                📅 {lang==="he"?"העבר למחר (Pool)":"Move to tomorrow (Pool)"}
               </button>
               <button onClick={()=>setShowCal(true)}
                 className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
-                {lang==="he"?"בחר תאריך":"Choose date"}
+                🗓 {lang==="he"?"העבר לתאריך...":"Move to date..."}
               </button>
-              <button onClick={()=>{ onMoveToDate(dt); setCtx(null); }}
+              <button onClick={()=>{ onMoveToInventoryWaiting(); setCtx(null); }}
                 className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
-                {lang==="he"?"החזר לאותו יום (פתור)":"Return to same day (resolved)"}
+                🗃 {lang==="he"?"העבר למלאי (בהמתנה)":"Move to inventory (Waiting)"}
               </button>
-              <button onClick={()=>{ onMoveToInventory(); setCtx(null); }}
-                className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
-                {lang==="he"?"העבר למלאי":"Move to inventory"}
-              </button>
-              <button onClick={()=>{ onResolve(); setCtx(null); }}
-                className="w-full text-left px-2 py-1.5 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-emerald-600">
-                ✓ {lang==="he"?"קיבלתי תשובה (פתור)":"Got reply (resolve)"}
+              <div className="border-t my-1"/>
+              <button onClick={()=>{ onArchive(); setCtx(null); }}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-semibold">
+                ✅ {lang==="he"?"הסתיימה — קיבלתי תשובה":"Done — got reply"}
               </button>
             </> :
-              <MiniCalendar lang={lang} t={t} onPick={ds=>{ onMoveToDate(ds); setCtx(null); setShowCal(false); }} />
+              <MiniCalendar lang={lang} t={t} onPick={ds=>{ onMoveToPool(ds); setCtx(null); setShowCal(false); }} />
             }
           </div>
         </div>, document.body)}
@@ -2372,44 +2369,49 @@ function App() {
         : allWaitingTasks.map(({item,date:dt,panel,aw},i)=>(
           <WaitingRow key={item.id+i} item={item} dt={dt} panel={panel} aw={aw} lang={lang} t={t}
             onGoTo={()=>{ setDate(dt); setTab("daily"); }}
-            onMoveToDate={(targetDate)=>{
-              // resolve waiting and move to scheduled of targetDate
+            onMoveToPool={(targetDate)=>{
               setData(d=>{
-                const nd = JSON.parse(JSON.stringify(d));
-                const srcDay = nd.daily[dt] || emptyDay();
-                const sections = ['homeBefore','toWork','fromWork','homeAfter'];
-                const panels2 = ['pool','fastDoing','scheduled','newTasks'];
-                let found = false;
-                // find and remove from source
-                panels2.forEach(key=>{
-                  if(found) return;
-                  const idx = (srcDay[key]||[]).findIndex(i=>i.id===item.id);
-                  if(idx>=0){ srcDay[key].splice(idx,1); found=true; }
-                });
-                sections.forEach(sec=>{
-                  if(found) return;
-                  const idx = ((srcDay.sections||{})[sec]||[]).findIndex(i=>i.id===item.id);
-                  if(idx>=0){ srcDay.sections[sec].splice(idx,1); found=true; }
-                });
-                // resolve waiting log and move to target
-                const movedItem = {...item, waitingLog:(item.waitingLog||[]).map(w=>w.resolved?w:{...w,resolved:true,resolvedAt:todayStr()})};
+                const nd=JSON.parse(JSON.stringify(d));
+                const srcDay=nd.daily[dt]||emptyDay();
+                const panels2=['pool','fastDoing','scheduled','newTasks'];
+                const sections=['homeBefore','toWork','fromWork','homeAfter'];
+                let found=false;
+                panels2.forEach(key=>{ if(found) return; const idx=(srcDay[key]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay[key].splice(idx,1); found=true; } });
+                sections.forEach(sec=>{ if(found) return; const idx=((srcDay.sections||{})[sec]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay.sections[sec].splice(idx,1); found=true; } });
+                const movedItem={...item, waitingLog:(item.waitingLog||[]).map(w=>w.resolved?w:{...w,resolved:true,resolvedAt:todayStr()})};
                 if(!nd.daily[targetDate]) nd.daily[targetDate]=emptyDay();
-                nd.daily[targetDate].scheduled = [...(nd.daily[targetDate].scheduled||[]), movedItem];
-                nd.daily[dt] = srcDay;
+                nd.daily[targetDate].pool=[...(nd.daily[targetDate].pool||[]),movedItem];
+                nd.daily[dt]=srcDay;
                 return nd;
               });
             }}
-            onMoveToInventory={()=>moveTaskToInventory({key:panel, section: ['homeBefore','toWork','fromWork','homeAfter'].includes(panel)?panel:undefined}, item.id)}
-            onResolve={()=>{
+            onMoveToInventoryWaiting={()=>{
               setData(d=>{
                 const nd=JSON.parse(JSON.stringify(d));
-                const dy=nd.daily[dt]||emptyDay();
+                const srcDay=nd.daily[dt]||emptyDay();
                 const panels2=['pool','fastDoing','scheduled','newTasks'];
                 const sections=['homeBefore','toWork','fromWork','homeAfter'];
-                const resolveLog=(it)=>({...it,waitingLog:(it.waitingLog||[]).map(w=>w.resolved?w:{...w,resolved:true,resolvedAt:todayStr()})});
-                panels2.forEach(key=>{ dy[key]=(dy[key]||[]).map(i=>i.id===item.id?resolveLog(i):i); });
-                sections.forEach(sec=>{ if(dy.sections?.[sec]) dy.sections[sec]=dy.sections[sec].map(i=>i.id===item.id?resolveLog(i):i); });
-                nd.daily[dt]=dy;
+                let found=false;
+                panels2.forEach(key=>{ if(found) return; const idx=(srcDay[key]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay[key].splice(idx,1); found=true; } });
+                sections.forEach(sec=>{ if(found) return; const idx=((srcDay.sections||{})[sec]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay.sections[sec].splice(idx,1); found=true; } });
+                const invItem={...item, id:uid(), category:"waiting"};
+                nd.inventory={...nd.inventory, waiting:[...(nd.inventory.waiting||[]),invItem]};
+                nd.daily[dt]=srcDay;
+                return nd;
+              });
+            }}
+            onArchive={()=>{
+              setData(d=>{
+                const nd=JSON.parse(JSON.stringify(d));
+                const srcDay=nd.daily[dt]||emptyDay();
+                const panels2=['pool','fastDoing','scheduled','newTasks'];
+                const sections=['homeBefore','toWork','fromWork','homeAfter'];
+                let found=false;
+                panels2.forEach(key=>{ if(found) return; const idx=(srcDay[key]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay[key].splice(idx,1); found=true; } });
+                sections.forEach(sec=>{ if(found) return; const idx=((srcDay.sections||{})[sec]||[]).findIndex(i=>i.id===item.id); if(idx>=0){ srcDay.sections[sec].splice(idx,1); found=true; } });
+                const archiveEntry={id:uid(), text:item.text, html:item.html||"", date:todayStr(), category:item.category||"other", source:"waiting", waitingLog:item.waitingLog};
+                nd.archive=[archiveEntry,...(nd.archive||[])];
+                nd.daily[dt]=srcDay;
                 return nd;
               });
             }}
