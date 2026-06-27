@@ -380,7 +380,7 @@ function importJsonFile(onData){
 /* ================================================================ */
 
 /* Build/version marker - updated each time a new file is generated, shown in the UI footer */
-const APP_BUILD = "v3.2 — 2026-06-27 10:00";
+const APP_BUILD = "v3.2.1 — 2026-06-27 14:00";
 
 const STORAGE_KEY = "daily-task-manager-data";
 /* ---------------- merge two data snapshots (for multi-device sync) ---------------- */
@@ -2187,7 +2187,7 @@ function App() {
       ),
       render:(cellBg)=>{
         const visibleItems = showDoneScheduled ? day.scheduled : day.scheduled.filter(i=>!i.done);
-        return visibleItems.map((item,idx)=>(
+        return visibleItems.map((item)=>{ const idx = day.scheduled.findIndex(i=>i.id===item.id); return (
           <TaskRow key={item.id} item={item} prefixFields={[]} suffixFields={["to","from"]} dir={dir} t={t} cellBg={cellBg}
             taskNumber={idx+1}
             rowIndex={idx} onDragRow={(f,to,tp)=>moveTaskAcross({key:"scheduled"},f,tp,to)}
@@ -2217,8 +2217,7 @@ function App() {
             onDelete={()=>deleteItem({key:"scheduled"}, item.id)}
             onMove={()=>moveItem({key:"scheduled"},{key:"pool"},item.id,{note:"",from:"",to:""})}
             moveLabel={t.moveBack} moveDirection="left" />
-        ));
-      }
+        );}); }
     },
     ...[["homeBefore",t.homeBefore],["toWork",t.toWork],["fromWork",t.fromWork],["homeAfter",t.homeAfter]].map(([key,label])=>({
       id:key, title:label,
