@@ -1421,6 +1421,58 @@ function PanelBoxTablet({ id, title, actions, render, layout, onColor, onMarquee
 }
 
 /* ---------------- App ---------------- */
+function WaitingRow({ item, dt, panel, aw, lang, t, onGoTo, onMoveToDate, onMoveToInventory, onResolve }) {
+  const [ctx, setCtx] = useState(null);
+  const [showCal, setShowCal] = useState(false);
+  const today = todayStr();
+  const overdue = aw.expectedDate < today;
+
+  return (
+    <div onContextMenu={e=>{ e.preventDefault(); setCtx({top:Math.min(e.clientY,window.innerHeight-220),left:Math.min(e.clientX,window.innerWidth-220)}); setShowCal(false); }}
+      className={`flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 py-1 px-1 text-xs cursor-context-menu ${overdue?"bg-red-50 dark:bg-red-900/20":""}`}
+      style={{direction:"ltr"}}>
+      <span className={`font-bold flex-shrink-0 ${overdue?"text-red-500":"text-orange-500"}`}>{overdue?"🔴":"⏳"}</span>
+      <span className="flex-1 truncate">{item.text||"—"}</span>
+      <span className="opacity-60 flex-shrink-0">{aw.expectedDate}</span>
+      <span className="opacity-40 text-[10px] flex-shrink-0">{dt}</span>
+      <button onClick={onGoTo} className="text-[10px] px-1.5 py-0.5 border rounded hover:bg-black/5 flex-shrink-0">
+        {lang==="he"?"עבור":"Go"}
+      </button>
+      {ctx && createPortal(
+        <div className="fixed inset-0 z-[999]" onClick={()=>{ setCtx(null); setShowCal(false); }}>
+          <div onClick={e=>e.stopPropagation()} className="absolute bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg shadow-xl p-2 text-xs w-56"
+            style={{top:ctx.top, left:ctx.left}}>
+            <div className="font-semibold px-2 py-1 opacity-60 truncate mb-1">{item.text||"—"}</div>
+            {!showCal ? <>
+              <button onClick={()=>{ onMoveToDate(addDays(today,1)); setCtx(null); }}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
+                {lang==="he"?"העבר למחר":"Move to tomorrow"}
+              </button>
+              <button onClick={()=>setShowCal(true)}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
+                {lang==="he"?"בחר תאריך":"Choose date"}
+              </button>
+              <button onClick={()=>{ onMoveToDate(dt); setCtx(null); }}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
+                {lang==="he"?"החזר לאותו יום (פתור)":"Return to same day (resolved)"}
+              </button>
+              <button onClick={()=>{ onMoveToInventory(); setCtx(null); }}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10">
+                {lang==="he"?"העבר למלאי":"Move to inventory"}
+              </button>
+              <button onClick={()=>{ onResolve(); setCtx(null); }}
+                className="w-full text-left px-2 py-1.5 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-emerald-600">
+                ✓ {lang==="he"?"קיבלתי תשובה (פתור)":"Got reply (resolve)"}
+              </button>
+            </> :
+              <MiniCalendar lang={lang} t={t} onPick={ds=>{ onMoveToDate(ds); setCtx(null); setShowCal(false); }} />
+            }
+          </div>
+        </div>, document.body)}
+    </div>
+  );
+}
+
 function AddPanelButton({ tab, onAdd, t }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -2318,15 +2370,50 @@ function App() {
       allWaitingTasks.length===0
         ? <div className="text-xs opacity-50 p-2">{lang==="he"?"אין משימות ממתינות":"No waiting tasks"}</div>
         : allWaitingTasks.map(({item,date:dt,panel,aw},i)=>(
-          <div key={item.id+i} className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 py-1 px-1 text-xs" style={{direction:"ltr"}}>
-            <span className="text-orange-500 font-bold flex-shrink-0">⏳</span>
-            <span className="flex-1 truncate">{item.text||"—"}</span>
-            <span className="opacity-60 flex-shrink-0">{aw.expectedDate}</span>
-            <span className="opacity-40 text-[10px] flex-shrink-0">{dt}</span>
-            <button onClick={()=>{ setDate(dt); setTab("daily"); }} className="text-[10px] px-1.5 py-0.5 border rounded hover:bg-black/5">
-              {lang==="he"?"עבור":"Go"}
-            </button>
-          </div>
+          <WaitingRow key={item.id+i} item={item} dt={dt} panel={panel} aw={aw} lang={lang} t={t}
+            onGoTo={()=>{ setDate(dt); setTab("daily"); }}
+            onMoveToDate={(targetDate)=>{
+              // resolve waiting and move to scheduled of targetDate
+              setData(d=>{
+                const nd = JSON.parse(JSON.stringify(d));
+                const srcDay = nd.daily[dt] || emptyDay();
+                const sections = ['homeBefore','toWork','fromWork','homeAfter'];
+                const panels2 = ['pool','fastDoing','scheduled','newTasks'];
+                let found = false;
+                // find and remove from source
+                panels2.forEach(key=>{
+                  if(found) return;
+                  const idx = (srcDay[key]||[]).findIndex(i=>i.id===item.id);
+                  if(idx>=0){ srcDay[key].splice(idx,1); found=true; }
+                });
+                sections.forEach(sec=>{
+                  if(found) return;
+                  const idx = ((srcDay.sections||{})[sec]||[]).findIndex(i=>i.id===item.id);
+                  if(idx>=0){ srcDay.sections[sec].splice(idx,1); found=true; }
+                });
+                // resolve waiting log and move to target
+                const movedItem = {...item, waitingLog:(item.waitingLog||[]).map(w=>w.resolved?w:{...w,resolved:true,resolvedAt:todayStr()})};
+                if(!nd.daily[targetDate]) nd.daily[targetDate]=emptyDay();
+                nd.daily[targetDate].scheduled = [...(nd.daily[targetDate].scheduled||[]), movedItem];
+                nd.daily[dt] = srcDay;
+                return nd;
+              });
+            }}
+            onMoveToInventory={()=>moveTaskToInventory({key:panel, section: ['homeBefore','toWork','fromWork','homeAfter'].includes(panel)?panel:undefined}, item.id)}
+            onResolve={()=>{
+              setData(d=>{
+                const nd=JSON.parse(JSON.stringify(d));
+                const dy=nd.daily[dt]||emptyDay();
+                const panels2=['pool','fastDoing','scheduled','newTasks'];
+                const sections=['homeBefore','toWork','fromWork','homeAfter'];
+                const resolveLog=(it)=>({...it,waitingLog:(it.waitingLog||[]).map(w=>w.resolved?w:{...w,resolved:true,resolvedAt:todayStr()})});
+                panels2.forEach(key=>{ dy[key]=(dy[key]||[]).map(i=>i.id===item.id?resolveLog(i):i); });
+                sections.forEach(sec=>{ if(dy.sections?.[sec]) dy.sections[sec]=dy.sections[sec].map(i=>i.id===item.id?resolveLog(i):i); });
+                nd.daily[dt]=dy;
+                return nd;
+              });
+            }}
+          />
         ))
     )
   });
