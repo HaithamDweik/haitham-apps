@@ -381,7 +381,7 @@ function importJsonFile(onData){
 /* ================================================================ */
 
 /* Build/version marker - updated each time a new file is generated, shown in the UI footer */
-const APP_BUILD = "v3.2.3 — 2026-06-27 15:00";
+const APP_BUILD = "v3.2.4 — 2026-06-27 15:00";
 
 const STORAGE_KEY = "daily-task-manager-data";
 /* ---------------- merge two data snapshots (for multi-device sync) ---------------- */
@@ -1561,36 +1561,53 @@ function App() {
   const [date, setDate] = useState(todayStr());
   useEffect(()=>{ checkWaitingTasks(); }, []); // eslint-disable-line
 
-  // Auto-transfer unfinished tasks to tomorrow at 23:00
+  // Auto-transfer: runs on load AND at 23:00 every minute
+  // Catches up missed transfers from previous days
+  const doAutoTransfer = (fromDate, toDate) => {
+    setData(d=>{
+      const fromDay = d.daily[fromDate];
+      if(!fromDay) return d;
+      const panels = ['pool','fastDoing','scheduled','newTasks'];
+      const sections = ['homeBefore','toWork','fromWork','homeAfter'];
+      // collect all unfinished tasks from fromDate
+      const toMove = [];
+      panels.forEach(key=>(fromDay[key]||[]).forEach(i=>{ if(!i.done) toMove.push({...i, id:uid()}); }));
+      sections.forEach(sec=>((fromDay.sections||{})[sec]||[]).forEach(i=>{ if(!i.done) toMove.push({...i, id:uid()}); }));
+      if(toMove.length===0) return d;
+      const nd = JSON.parse(JSON.stringify(d));
+      // clear unfinished from source date
+      panels.forEach(key=>{ nd.daily[fromDate][key]=(nd.daily[fromDate][key]||[]).filter(i=>i.done); });
+      sections.forEach(sec=>{ if(nd.daily[fromDate].sections?.[sec]) nd.daily[fromDate].sections[sec]=nd.daily[fromDate].sections[sec].filter(i=>i.done); });
+      // add to pool of toDate
+      if(!nd.daily[toDate]) nd.daily[toDate]=emptyDay();
+      nd.daily[toDate].pool=[...toMove, ...(nd.daily[toDate].pool||[])];
+      return nd;
+    });
+  };
+
+  useEffect(()=>{
+    // On load: check last 3 days for missed transfers
+    const today = todayStr();
+    for(let i=1; i<=3; i++){
+      const pastDate = addDays(today, -i);
+      doAutoTransfer(pastDate, today);
+    }
+  }, []); // eslint-disable-line
+
+  // Also check every minute at 23:00
   useEffect(()=>{
     const check = () => {
       const now = new Date();
       if(now.getHours()===23 && now.getMinutes()===0){
         const today = todayStr();
         const tomorrow = addDays(today, 1);
-        setData(d=>{
-          const todayDay = d.daily[today] || emptyDay();
-          const tomorrowDay = JSON.parse(JSON.stringify(d.daily[tomorrow] || emptyDay()));
-          const panels = ['pool','fastDoing','scheduled','newTasks'];
-          const sections = ['homeBefore','toWork','fromWork','homeAfter'];
-          let changed = false;
-          panels.forEach(key=>{
-            const unfinished = (todayDay[key]||[]).filter(i=>!i.done);
-            if(unfinished.length){ tomorrowDay[key] = [...tomorrowDay[key], ...unfinished.map(i=>({...i,id:uid()}))]; changed=true; }
-          });
-          sections.forEach(sec=>{
-            const unfinished = ((todayDay.sections||{})[sec]||[]).filter(i=>!i.done);
-            if(unfinished.length){ tomorrowDay.sections[sec]=[...tomorrowDay.sections[sec],...unfinished.map(i=>({...i,id:uid()}))]; changed=true; }
-          });
-          if(!changed) return d;
-          return {...d, daily:{...d.daily, [tomorrow]: tomorrowDay}};
-        });
+        doAutoTransfer(today, tomorrow);
       }
     };
     check();
-    const iv = setInterval(check, 60000); // check every minute
+    const iv = setInterval(check, 60000);
     return ()=>clearInterval(iv);
-  }, []);
+  }, []); // eslint-disable-line
 
   /* ── OneDrive: init MSAL and handle redirect ── */
   useEffect(()=>{
