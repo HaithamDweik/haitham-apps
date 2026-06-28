@@ -353,7 +353,7 @@ async function odGetToken(instance){
     const r = await instance.acquireTokenSilent({ scopes:OD_SCOPES, account:accounts[0] });
     return r.accessToken;
   } catch {
-    try { const r = await instance.acquireTokenPopup({scopes:OD_SCOPES}); return r.accessToken; }
+    try { await instance.acquireTokenRedirect({scopes:OD_SCOPES}); return null; }
     catch(e){ console.error("Token error:",e); return null; }
   }
 }
@@ -381,7 +381,7 @@ function importJsonFile(onData){
 /* ================================================================ */
 
 /* Build/version marker - updated each time a new file is generated, shown in the UI footer */
-const APP_BUILD = "v3.2.4 — 2026-06-27 15:00";
+const APP_BUILD = "v3.2.5 — 2026-06-27 15:00";
 
 const STORAGE_KEY = "daily-task-manager-data";
 /* ---------------- merge two data snapshots (for multi-device sync) ---------------- */
@@ -1654,10 +1654,8 @@ function App() {
     msalRef.current = instance;
     setOdStatus("connecting");
     try {
-      const result = await instance.loginPopup({ scopes:OD_SCOPES });
-      setOdAccount(result.account);
-      setOdStatus("connected");
-      odLoadFromOneDrive(instance);
+      await instance.loginRedirect({ scopes:OD_SCOPES }); return; // will redirect
+      // account set after redirect in handleRedirectPromise
     } catch(e){ console.error("Login:",e); setOdStatus("error"); }
   };
 
